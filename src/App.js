@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-export default App;
+import 'bootstrap-icons/font/bootstrap-icons.css'
+
+import Sidebar from './Components/Sidebar'
+
+import Home from './Components/Home'
+
+import { useState } from 'react'
+
+
+
+function App() {    
+  const [toggle, setToggle] = useState(true);
+  const Toggle = () => {        
+    setToggle(!toggle)    
+  }
+  
+  return (    
+      <div className='container-fluid  min-vh-100 ' style={{backgroundImage: "linear-gradient(to right, #0f0c29, #302b63, #24243e)"}}>
+          
+        <div className='row '>
+          {toggle && <div className='col-4 col-md-2 bg-white vh-100 position-fixed'>      
+                        <Sidebar />       
+                      </div>}        
+          {toggle &&  <div className='col-4 col-md-2'></div>}         
+            <div className='col'>             
+                <Home Toggle={Toggle}/>         
+            </div>     
+          </div>  
+      </div>  
+      )
+    }
+
+export default App
