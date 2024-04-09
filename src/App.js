@@ -19,7 +19,7 @@ function App() {
   }
   
   return (    
-      <div className='container-fluid  min-vh-100 ' style={{backgroundImage: "linear-gradient(to right, #0f0c29, #302b63, #24243e)"}}>
+      <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#d3d5e8"}}>
           
         <div className='row '>
           {toggle && <div className='col-4 col-md-2 bg-white vh-100 position-fixed'>      
@@ -29,7 +29,7 @@ function App() {
             <div className='col'>             
                 <Home Toggle={Toggle}/>         
             </div>     
-          </div>  
+        </div>  
       </div>  
       )
     }

@@ -1,10 +1,11 @@
 import React from 'react'
+import logo from '../assets/icons/logo.png'
 
 function Sidebar(){ 
     return (    
         <div className='bg-white sidebar p-2'>    
             <div className='m-2'>     
-               <i className='bi bi-bootstrap-fill me-3 fs-4'></i>       
+                <img src={logo} alt="Logo" style={{height:75, width:75}} />     
                 <span className='brand-name fs-4'>Burak</span>  
             </div>     
             <hr className='text-dark' />     
