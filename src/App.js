@@ -1,36 +1,24 @@
 import React from 'react'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import LoginPage from './pages/LoginPage'
 
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import HomePage from './pages/HomePage'
 
-import Sidebar from './Components/Sidebar'
-
-import Home from './Components/Home'
-
-import { useState } from 'react'
-
-
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {    
-  const [toggle, setToggle] = useState(true);
-  const Toggle = () => {        
-    setToggle(!toggle)    
-  }
+
+  
   
   return (    
-      <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#d3d5e8"}}>
-          
-        <div className='row '>
-          {toggle && <div className='col-4 col-md-2 bg-white vh-100 position-fixed'>      
-                        <Sidebar />       
-                      </div>}        
-          {toggle &&  <div className='col-4 col-md-2'></div>}         
-            <div className='col'>             
-                <Home Toggle={Toggle}/>         
-            </div>     
-        </div>  
-      </div>  
+
+                <BrowserRouter>
+                  <Routes>
+                    <Route path='/login' element={<LoginPage/>}/>
+                    <Route path='/home' element={<HomePage />}/>
+                  </Routes> 
+                 </BrowserRouter>
+              
       )
     }
 
