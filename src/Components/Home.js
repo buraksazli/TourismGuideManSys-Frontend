@@ -9,7 +9,8 @@ function Home({ Toggle }) {
         <div className='px-3'>       
             <Nav Toggle={Toggle} />     
             <div className='container-fluid'>        
-                <div className='row g-3 my-2'>        
+                <div className='row g-3 my-2'>    
+                    <h1>Home</h1>    
                     <div className='col-md-3 p-1'>         
                        <div className='p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded'>           
                             <div>                                
@@ -48,56 +49,39 @@ function Home({ Toggle }) {
                         </div>      
                     </div>        
                 </div>
+                <h1>Current Tours</h1>
+                <table className="table table-hover">
+                    <thead className="thead table-dark">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                    </table>
 
-            <table class="table caption-top bg-white rounded mt-2">      
-                <caption className='text-white fs-4'>Recent Orders</caption>     
-                <thead>              
-                    <tr>              
-                        <th scope="col">#</th>           
-                        <th scope="col">First</th>         
-                        <th scope="col">Last</th>         
-                        <th scope="col">Handle</th>   
-                    </tr>      
-                </thead>          
-                <tbody>         
-                    <tr>              
-                        <th scope="row">1</th>              
-                        <td>Mark</td>                       
-                        <td>Otto</td>                     
-                       <td>@mdo</td>          
-                    </tr>                
-                    <tr>            
-                        <th scope="row">2</th>             
-                        <td>Jacob</td>              
-                        <td>Thornton</td>            
-                        <td>@fat</td>          
-                    </tr>            
-                    <tr>              
-                        <th scope="row">3</th>           
-                            <td>Larry</td>            
-                            <td>the Bird</td>     
-                            <td>@twitter</td>                    
-                    </tr>                   
-                    <tr>                        
-                        <th scope="row">4</th>                        
-                            <td>Larry</td>                        
-                            <td>the Bird</td>                       
-                            <td>@twitter</td>                   
-                    </tr>                    
-                    <tr>                        
-                        <th scope="row">5</th>                       
-                        <td>Larry</td>                        
-                        <td>the Bird</td>                       
-                        <td>@twitter</td>                    
-                    </tr>                    
-                    <tr>                        
-                        <th scope="row">6</th>                      
-                        <td>Larry</td>                       
-                        <td>the Bird</td>                       
-                        <td>@twitter</td>                    
-                        </tr>               
-                </tbody>           
-            </table>        
+  
         </div>    
         )
     }
