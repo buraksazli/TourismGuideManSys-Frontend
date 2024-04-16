@@ -1,18 +1,20 @@
 import React from 'react';
 import logo from '../assets/icons/logo.png'
-import { useState } from 'react';
+import { useState  } from 'react';
+import { useNavigate } from "react-router-dom";
 function Login() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit =  (e) => {
+  const handleSubmit =  (e) => {    
     e.preventDefault(); 
-
+    
     localStorage.setItem('username', username);
     localStorage.setItem('password', password);
 
-    window.location.href = '/home';    
+    navigate("/home");    
   };
 
   return (
