@@ -28,7 +28,7 @@ function Sidebar(){
                     <i className='bi bi-people fs-5 me-3'></i>        
                         <span >Guides</span>     
                 </Link>       
-                <Link to={''} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>         
+                <Link to={'/confirmGuide'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>         
                     <i className='bi bi-person-check fs-5 me-3'></i>       
                         <span >Guide Confirmation</span>     
                 </Link>        

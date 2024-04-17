@@ -6,6 +6,8 @@ import TouristsPage from './pages/TouristsPage'
 
 import HomePage from './pages/HomePage'
 
+import GuideConfirmPage from './pages/GuideConfirmPage'
+
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 
 function App() {    
@@ -23,6 +25,7 @@ function App() {
                     <Route path='/login' element={<LoginPage/>}/>
                     <Route path='/home' element={<HomePage />}/>
                     <Route path='/tourists' element={<TouristsPage />}/>
+                    <Route path='/confirmGuide' element={<GuideConfirmPage />}/>
                   </Routes> 
                  </BrowserRouter>
               
