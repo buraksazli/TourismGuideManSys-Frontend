@@ -2,7 +2,7 @@ import React from 'react'
 
 import LoginPage from './pages/LoginPage'
 
-
+import TouristsPage from './pages/TouristsPage'
 
 import HomePage from './pages/HomePage'
 
@@ -22,6 +22,7 @@ function App() {
                     
                     <Route path='/login' element={<LoginPage/>}/>
                     <Route path='/home' element={<HomePage />}/>
+                    <Route path='/tourists' element={<TouristsPage />}/>
                   </Routes> 
                  </BrowserRouter>
               

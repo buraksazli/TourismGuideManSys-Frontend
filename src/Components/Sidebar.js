@@ -9,18 +9,18 @@ function Sidebar(){
     }
 
     return (    
-        <div className=' sidebar p-2'>    
+        <div className=' sidebar p-2' >    
             <div className='m-2'>     
                 <img src={logo} alt="Logo" style={{height:75, width:75}} />     
                 <span className='brand-name fs-4 font-weight-bold'>TGMS</span>  
             </div>     
             <hr className='text-dark' />     
             <div className='list-group border-dark'>      
-                <Link to={''} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>            
+                <Link to={'/home'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>            
                     <i className='bi bi-house fs-5 me-3'></i>       
                     <span >Home</span>       
                 </Link>        
-                <Link to={''} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>      
+                <Link to={'/tourists'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>      
                     <i className='bi bi-person fs-5 me-3'></i>         
                     <span >Tourists</span>      
                 </Link>            
