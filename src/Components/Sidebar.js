@@ -32,13 +32,9 @@ function Sidebar(){
                     <i className='bi bi-person-check fs-5 me-3'></i>       
                         <span >Guide Confirmation</span>     
                 </Link>        
-                <Link to={''} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
+                <Link to={'/tours'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
                     <i className='bi bi-globe-americas fs-5 me-3'></i>        
                         <span >Tours</span>    
-                </Link> 
-                <Link to={''} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
-                    <i className='bi bi-check-circle fs-5 me-3'></i>        
-                        <span >Ratings</span>    
                 </Link> 
                 <Link to={''} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
                     <i className='bi bi-exclamation-circle fs-5 me-3'></i>        

@@ -6,6 +6,8 @@ import { useState  } from 'react';
 
 import Table from 'react-bootstrap/Table';
 
+import ModalButton from './ModalButton';
+
 import Pagination from 'react-bootstrap/Pagination';
 
 function Home({ Toggle }) {   
@@ -34,7 +36,7 @@ function Home({ Toggle }) {
         <div className='px-3'>       
             <Nav Toggle={Toggle} />     
             <div className='container-fluid'>        
-                <div className='row g-3 my-2'>    
+                <div className='row  '>    
                     <h1>Home</h1>
                     <div className='col-md-3 p-1'>         
                        <div className='p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded'>           
@@ -81,6 +83,7 @@ function Home({ Toggle }) {
                     <th>#</th>
                     <th>Name</th>
                     <th>Value</th>
+                    <th>Tourist List</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -88,7 +91,8 @@ function Home({ Toggle }) {
                     <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.name}</td>
-                    <td>{item.value}</td>
+                    <td>{item.value}</td>                    
+                    <td><ModalButton/></td>
                     </tr>
                 ))}
                 </tbody>

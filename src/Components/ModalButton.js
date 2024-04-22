@@ -1,41 +1,58 @@
 import React from 'react'
-import Nav from './Navbar'
 
-import { useState  } from 'react';
+import { useState } from 'react';
+
+import Button from 'react-bootstrap/Button';
+
+import Modal1 from 'react-bootstrap/Modal';
 
 import Table from 'react-bootstrap/Table';
 
+import '../App.css';
+
 import Pagination from 'react-bootstrap/Pagination';
-function GuideConfirmList(Toggle) {
+
+function ModalButton() {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const data = [
-        { id: 1, name: 'Örnek 1', value: 10 },
-        { id: 2, name: 'Örnek 2', value: 20 },
-        { id: 3, name: 'Örnek 3', value: 30 },
-        { id: 4, name: 'Örnek 4', value: 30 },
-        { id: 5, name: 'Örnek 5', value: 40 },
-        { id: 6, name: 'Örnek 6', value: 50 },
-        { id: 7, name: 'Örnek 7', value: 60 },
-        { id: 8, name: 'Örnek 8', value: 70 },
-        { id: 6, name: 'Örnek 6', value: 50 },
-        { id: 7, name: 'Örnek 7', value: 60 },
-        { id: 8, name: 'Örnek 8', value: 70 },
-        { id: 9, name: 'Örnek 9', value: 80 }
-      ];
-   
-      const [currentPage, setCurrentPage] = useState(1);
-      const [itemsPerPage] = useState(8); 
-    
-      const indexOfLastItem = currentPage * itemsPerPage;
-      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-      const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-    
-      const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  return (
-    <div className='px-3'>       
-            <Nav Toggle={Toggle} />     
-            
-            <h1>Guide Confirmation</h1>
-            <Table  hover>
+      { id: 1, name: 'Örnek 1', value: 10 },
+      { id: 2, name: 'Örnek 2', value: 20 },
+      { id: 3, name: 'Örnek 3', value: 30 },
+      { id: 4, name: 'Örnek 4', value: 30 },
+      { id: 5, name: 'Örnek 5', value: 40 },
+      { id: 6, name: 'Örnek 6', value: 50 },
+      { id: 7, name: 'Örnek 7', value: 60 },
+      { id: 8, name: 'Örnek 8', value: 70 },
+      { id: 6, name: 'Örnek 6', value: 50 },
+      { id: 7, name: 'Örnek 7', value: 60 },
+      { id: 8, name: 'Örnek 8', value: 70 },
+      { id: 9, name: 'Örnek 9', value: 80 }
+    ];
+ 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(7); 
+  
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  
+    return (
+      <>
+        <Button variant="primary" onClick={handleShow}>
+          See Tourists
+        </Button>
+  
+        <Modal1 show={show} onHide={handleClose} dialogClassName="modal-lg" >
+          <Modal1.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
+            <Modal1.Title>Modal heading</Modal1.Title>
+          </Modal1.Header>
+          <Modal1.Body style={{backgroundColor: "#DCDCDC"}}>
+            <Table bordered hover>
                 <thead>
                 <tr>
                     <th>#</th>
@@ -86,10 +103,18 @@ function GuideConfirmList(Toggle) {
                     {index + 1}
                 </Pagination.Item>
                 ))}
-            </Pagination>
- 
-        </div> 
-  )
+            </Pagination></Modal1.Body>
+          <Modal1.Footer style={{backgroundColor: "#F0F0F0"}}>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal1.Footer>
+        </Modal1>
+      </>
+    );
 }
 
-export default GuideConfirmList
+export default ModalButton
