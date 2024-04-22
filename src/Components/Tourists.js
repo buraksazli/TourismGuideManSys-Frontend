@@ -8,18 +8,18 @@ import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
 function Tourists( { Toggle }) {
     const data = [
-        { id: 1, name: 'Örnek 1', value: 10 },
-        { id: 2, name: 'Örnek 2', value: 20 },
-        { id: 3, name: 'Örnek 3', value: 30 },
-        { id: 4, name: 'Örnek 4', value: 30 },
-        { id: 5, name: 'Örnek 5', value: 40 },
-        { id: 6, name: 'Örnek 6', value: 50 },
-        { id: 7, name: 'Örnek 7', value: 60 },
-        { id: 8, name: 'Örnek 8', value: 70 },
-        { id: 6, name: 'Örnek 6', value: 50 },
-        { id: 7, name: 'Örnek 7', value: 60 },
-        { id: 8, name: 'Örnek 8', value: 70 },
-        { id: 9, name: 'Örnek 9', value: 80 }
+        { id: 1, name: 'Örnek 1', age:20,value: 10 },
+      { id: 2, name: 'Örnek 2', age:20,value: 20 },
+      { id: 3, name: 'Örnek 3', age:20,value: 30 },
+      { id: 4, name: 'Örnek 4', age:20,value: 30 },
+      { id: 5, name: 'Örnek 5', age:20,value: 40 },
+      { id: 6, name: 'Örnek 6',age:20, value: 50 },
+      { id: 7, name: 'Örnek 7', age:20,value: 60 },
+      { id: 8, name: 'Örnek 8', age:20,value: 70 },
+      { id: 6, name: 'Örnek 6', age:20,value: 50 },
+      { id: 7, name: 'Örnek 7', age:20,value: 60 },
+      { id: 8, name: 'Örnek 8', age:20,value: 70 },
+      { id: 9, name: 'Örnek 9', age:20,value: 80 }
       ];
    
       const [currentPage, setCurrentPage] = useState(1);
@@ -40,7 +40,10 @@ function Tourists( { Toggle }) {
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Age</th>
+                    <th>Comments</th>
                     <th>Value</th>
+                    
                 </tr>
                 </thead>
                 <tbody>
@@ -48,6 +51,16 @@ function Tourists( { Toggle }) {
                     <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.name}</td>
+                    <td>{item.age}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+                          <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                          <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                        </svg>
+                            See Comments
+                        </button>
+                    </td>
                     <td>
                     <button type="button" class="btn btn-dark">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">

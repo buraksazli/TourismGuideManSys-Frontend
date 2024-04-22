@@ -11,6 +11,7 @@ import GuideConfirmPage from './pages/GuideConfirmPage'
 import TourListPage from './pages/TourListPage'
 
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import ReportedRatingsPage from './pages/ReportedRatingsPage'
 
 function App() {    
 
@@ -29,6 +30,7 @@ function App() {
                     <Route path='/tourists' element={<TouristsPage />}/>
                     <Route path='/confirmGuide' element={<GuideConfirmPage />}/>
                     <Route path='/tours' element={<TourListPage />}/>
+                    <Route path='/reportedRatings' element={<ReportedRatingsPage />}/>
                   </Routes> 
                  </BrowserRouter>
               
