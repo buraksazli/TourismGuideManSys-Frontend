@@ -24,7 +24,7 @@ function Sidebar(){
                     <i className='bi bi-person fs-5 me-3'></i>         
                     <span >Tourists</span>      
                 </Link>            
-                <Link to={''} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>           
+                <Link to={'/guide'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>           
                     <i className='bi bi-people fs-5 me-3'></i>        
                         <span >Guides</span>     
                 </Link>       
@@ -40,7 +40,7 @@ function Sidebar(){
                     <i className='bi bi-exclamation-circle fs-5 me-3'></i>        
                         <span >Reported Ratings</span>    
                 </Link>   
-                <Link to={''} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
+                <Link to={'/profile'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
                     <i className='bi bi-person-circle fs-5 me-3'></i>        
                         <span >Profile</span>    
                 </Link>

@@ -1,14 +1,8 @@
 import React from 'react'
-
 import { useState } from 'react';
-
 import Button from 'react-bootstrap/Button';
-
 import Modal1 from 'react-bootstrap/Modal';
-
 import Table from 'react-bootstrap/Table';
-
-import '../App.css';
 
 import Pagination from 'react-bootstrap/Pagination';
 

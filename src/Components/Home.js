@@ -1,13 +1,8 @@
 import React from 'react'
-
 import Nav from './Navbar'
-
 import { useState  } from 'react';
-
 import Table from 'react-bootstrap/Table';
-
 import ModalButton from './ModalButton';
-
 import Pagination from 'react-bootstrap/Pagination';
 
 function Home({ Toggle }) {   
