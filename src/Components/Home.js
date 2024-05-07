@@ -7,15 +7,15 @@ import Pagination from 'react-bootstrap/Pagination';
 
 function Home({ Toggle }) {   
     const data = [
-        { id: 1, name: 'Örnek 1', value: 10 },
-        { id: 2, name: 'Örnek 2', value: 20 },
-        { id: 3, name: 'Örnek 3', value: 30 },
-        { id: 4, name: 'Örnek 4', value: 30 },
-        { id: 5, name: 'Örnek 5', value: 40 },
-        { id: 6, name: 'Örnek 6', value: 50 },
-        { id: 7, name: 'Örnek 7', value: 60 },
-        { id: 8, name: 'Örnek 8', value: 70 },
-        { id: 9, name: 'Örnek 9', value: 80 }
+        { id: 1, name: 'Örnek 1', value: 10, type: 'Urban',region:'Europe' },
+        { id: 2, name: 'Örnek 2', value: 20, type: 'Urban',region:'Europe' },
+        { id: 3, name: 'Örnek 3', value: 30, type: 'Urban',region:'Europe' },
+        { id: 4, name: 'Örnek 4', value: 30, type: 'Urban',region:'Europe' },
+        { id: 5, name: 'Örnek 5', value: 40, type: 'Urban' ,region:'Europe'},
+        { id: 6, name: 'Örnek 6', value: 50, type: 'Urban',region:'Europe' },
+        { id: 7, name: 'Örnek 7', value: 60, type: 'Urban',region:'Europe' },
+        { id: 8, name: 'Örnek 8', value: 70, type: 'Urban',region:'Europe' },
+        { id: 9, name: 'Örnek 9', value: 80, type: 'Urban',region:'Europe' }
       ];
    
       const [currentPage, setCurrentPage] = useState(1);
@@ -28,8 +28,11 @@ function Home({ Toggle }) {
       const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
     return (        
-        <div className='px-3'>       
-            <Nav Toggle={Toggle} />     
+        <div className='px-3 '>
+            <div className=''>     
+            <Nav Toggle={Toggle} />  
+            </div>
+            <div>    
             <div className='container-fluid'>        
                 <div className='row  '>    
                     <h1>Home</h1>
@@ -72,13 +75,16 @@ function Home({ Toggle }) {
                 </div>        
             </div>
             <h1>Current Tours</h1>
-            <Table  bordered hover>
+            <Table responsive bordered hover>
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Value</th>
-                    <th>Tourist List</th>
+                    <th width="10">#</th>
+                    <th width="170">Name</th>
+                    <th width="170">Guide</th>
+                    <th width="100">Type</th>
+                    <th width="100">Region</th>
+                    <th width="100">Date</th>
+                    <th width="10">Tourist List</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -86,7 +92,10 @@ function Home({ Toggle }) {
                     <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.name}</td>
-                    <td>{item.value}</td>                    
+                    <td>{item.value}</td>
+                    <td>{item.type}</td> 
+                    <td>{item.region}</td> 
+                    <td>{item.date}</td>                   
                     <td><ModalButton/></td>
                     </tr>
                 ))}
@@ -99,7 +108,7 @@ function Home({ Toggle }) {
                 </Pagination.Item>
                 ))}
             </Pagination>
- 
+            </div> 
         </div>    
         )
     }

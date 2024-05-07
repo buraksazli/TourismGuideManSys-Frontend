@@ -43,7 +43,7 @@ function ModalButton() {
   
         <Modal1 show={show} onHide={handleClose} dialogClassName="modal-lg" >
           <Modal1.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
-            <Modal1.Title>Modal heading </Modal1.Title>
+            <Modal1.Title>Tourist List </Modal1.Title>
           </Modal1.Header>
           <Modal1.Body style={{backgroundColor: "#DCDCDC"}}>
             <Table bordered hover>

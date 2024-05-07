@@ -20,7 +20,7 @@ function Login() {
   return (
     <>
     
-    <div className='d-flex flex-column pb-5 col-md-3 col-md-offset-1 col-xs-12' >
+    <div className='d-flex flex-column pb-5 col-md-3 col-md-offset-1 col-xs-12 ' >
 
       <div className='d-flex flex-row justify-content-center'>
         <img src={logo} alt="Logo" style={{height:75, width:75}} /> 

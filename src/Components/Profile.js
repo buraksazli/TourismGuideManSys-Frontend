@@ -6,8 +6,8 @@ function Profile({ Toggle }) {
   return (
     <div className='px-3'>
         <Nav Toggle={Toggle} />
-        <div className='d-flex flex-row p-4 mt-5'>
-            <div className='bg-light rounded w-25 me-1 d-flex flex-column shadow'>
+        <div className='d-flex flex-row p-4 mt-5 w-75 ms-auto me-auto '>
+            <div className='bg-light rounded w-25 me-1 d-flex flex-column shadow '>
                 <img className='ms-auto me-auto mt-3' src={Profileimg} alt="Profile" style={{height:125, width:125}} />
                 <h1 className='ms-auto me-auto'>Profile</h1>
                 <button className='btn btn-primary m-1'>My Profile</button>
@@ -17,23 +17,24 @@ function Profile({ Toggle }) {
             <div className="container bg-light rounded p-5 w-75 shadow">
                 <form action="" id="profileForm">
                     <div className="d-flex flex-column">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name" id="name" required></input>
-
+                        <div className='d-flex flex-row justify-content-between'>
+                            <div className='d-flex flex-column w-100 me-2'>
+                                <label  for="name">First Name:</label>
+                                <input type="text" name="name" id="name" required></input>
+                            </div>
+                            <div className='d-flex flex-column w-100'>
+                                <label for="name">Last Name:</label>
+                                <input type="text" name="name" id="name" required></input>
+                            </div>
+                        </div>
                         <label for="email">Email:</label>
                         <input type="email" name="email" id="email" required></input>
 
-                        <label for="gender">Gender:</label>
-                        <select name="gender" id="gender" required>
-                        <option value="male">male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                        </select>
-
-                        <label for="age">Age:</label>
-                        <input type="number" name="age" id="age" required></input>
-
-                        <button className='btn btn-primary mt-2 mb-3' onclick="submitForm()">Submit</button>
+                        <label for="name">Phone Number:</label>
+                        <input type="text" name="name" id="name" required></input>
+                        
+                        <label for="name">BirthDate:</label>
+                        <input type="text" name="name" id="name" required></input>
                     </div>
 
                 </form>

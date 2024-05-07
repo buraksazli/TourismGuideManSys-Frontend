@@ -15,18 +15,15 @@ export default function TourList({ Toggle }) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const data = [
-        { id: 1, name: 'Örnek 1', value: 10 },
-        { id: 2, name: 'Örnek 2', value: 20 },
-        { id: 3, name: 'Örnek 3', value: 30 },
-        { id: 4, name: 'Örnek 4', value: 30 },
-        { id: 5, name: 'Örnek 5', value: 40 },
-        { id: 6, name: 'Örnek 6', value: 50 },
-        { id: 7, name: 'Örnek 7', value: 60 },
-        { id: 8, name: 'Örnek 8', value: 70 },
-        { id: 6, name: 'Örnek 6', value: 50 },
-        { id: 7, name: 'Örnek 7', value: 60 },
-        { id: 8, name: 'Örnek 8', value: 70 },
-        { id: 9, name: 'Örnek 9', value: 80 }
+        { id: 1, name: 'Örnek 1', value: 10, type: 'Urban',region:'Europe' },
+        { id: 2, name: 'Örnek 2', value: 20, type: 'Urban',region:'Europe' },
+        { id: 3, name: 'Örnek 3', value: 30, type: 'Urban',region:'Europe' },
+        { id: 4, name: 'Örnek 4', value: 30, type: 'Urban',region:'Europe' },
+        { id: 5, name: 'Örnek 5', value: 40, type: 'Urban' ,region:'Europe'},
+        { id: 6, name: 'Örnek 6', value: 50, type: 'Urban',region:'Europe' },
+        { id: 7, name: 'Örnek 7', value: 60, type: 'Urban',region:'Europe' },
+        { id: 8, name: 'Örnek 8', value: 70, type: 'Urban',region:'Europe' },
+        { id: 9, name: 'Örnek 9', value: 80, type: 'Urban',region:'Europe' }
       ];
    
       const [currentPage, setCurrentPage] = useState(1);
@@ -45,9 +42,12 @@ export default function TourList({ Toggle }) {
             <Table  bordered hover>
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Value</th>
+                <th width="10">#</th>
+                    <th width="170">Name</th>
+                    <th width="170">Guide</th>
+                    <th width="100">Type</th>
+                    <th width="100">Region</th>
+                    <th width="100">Date</th>
                     <th>Tourist List</th>
                     <th>Ratings</th>
                 </tr>
@@ -57,7 +57,10 @@ export default function TourList({ Toggle }) {
                     <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.name}</td>
-                    <td>{item.value}</td>                    
+                    <td>{item.value}</td>
+                    <td>{item.type}</td> 
+                    <td>{item.region}</td> 
+                    <td>{item.date}</td>                     
                     <td><ModalButton/></td>
                     <td>
                         <Button variant="primary" onClick={handleShow}>

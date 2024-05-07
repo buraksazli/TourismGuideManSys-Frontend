@@ -44,9 +44,9 @@ function ReportedRatingList({ Toggle }) {
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Value</th>
-                    <th>Value</th>
+                    <th>Reported by</th>
+                    <th>Reported Comment</th>
+                    <th>Ignore/Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,7 +56,7 @@ function ReportedRatingList({ Toggle }) {
                     <td>{item.name}</td>
                     <td>
                     <Button variant="primary" onClick={handleShow}>
-                            See Ratings
+                            See Comment
                         </Button>
 
                         <Modal1 show={show} onHide={handleClose} dialogClassName='modal-dialog modal-dialog-scrollable' >

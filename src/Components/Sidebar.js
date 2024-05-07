@@ -3,48 +3,47 @@ import logo from '../assets/icons/logo.png'
 import { Link } from 'react-router-dom'
 
 function Sidebar(){ 
-    function handleClick() {
-        localStorage.setItem('username', '');
-        localStorage.setItem('password', '');
-    }
-
-    return (    
-        <div className=' sidebar p-2' >    
+        return (    
+        <div className='  p-2' >    
             <div className='m-2'>     
                 <img src={logo} alt="Logo" style={{height:75, width:75}} />     
                 <span className='brand-name fs-4 font-weight-bold'>TGMS</span>  
             </div>     
             <hr className='text-dark' />     
             <div className='list-group border-dark'>      
-                <Link to={'/home'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>            
+                <Link to={'/home'}  className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>            
                     <i className='bi bi-house fs-5 me-3'></i>       
                     <span >Home</span>       
-                </Link>        
-                <Link to={'/tourists'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>      
+                </Link>   
+                <Link to={'/admins'}  className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>      
+                    <i class="bi bi-person-gear fs-5 me-3"></i>         
+                    <span >Admins</span>      
+                </Link>     
+                <Link to={'/tourists'}  className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>      
                     <i className='bi bi-person fs-5 me-3'></i>         
                     <span >Tourists</span>      
                 </Link>            
-                <Link to={'/guide'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>           
+                <Link to={'/guide'}  className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>           
                     <i className='bi bi-people fs-5 me-3'></i>        
                         <span >Guides</span>     
                 </Link>       
-                <Link to={'/confirmGuide'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>         
+                <Link to={'/confirmGuide'}  className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>         
                     <i className='bi bi-person-check fs-5 me-3'></i>       
                         <span >Guide Confirmation</span>     
                 </Link>        
-                <Link to={'/tours'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
+                <Link to={'/tours'}  className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
                     <i className='bi bi-globe-americas fs-5 me-3'></i>        
                         <span >Tours</span>    
                 </Link> 
-                <Link to={'/reportedRatings'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
+                <Link to={'/reportedRatings'}  className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
                     <i className='bi bi-exclamation-circle fs-5 me-3'></i>        
                         <span >Reported Ratings</span>    
                 </Link>   
-                <Link to={'/profile'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
+                <Link to={'/profile'}  className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>       
                     <i className='bi bi-person-circle fs-5 me-3'></i>        
                         <span >Profile</span>    
                 </Link>
-                <Link to={'/login'} onClick={handleClick} className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>
+                <Link to={'/login'}  className='text-dark text-decoration-none ps-3 list-group-item list-group-item-light list-group-item-action'>
                     <i className='bi bi-power fs-5 me-3'></i>    
                     Logout       
                 </Link>

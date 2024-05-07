@@ -1,5 +1,6 @@
 import React from 'react'
 import LoginPage from './pages/LoginPage'
+import AdminPage from './pages/AdminPage'
 import TouristsPage from './pages/TouristsPage'
 import ProfilePage from './pages/ProfilePage'
 import HomePage from './pages/HomePage'
@@ -19,6 +20,7 @@ function App() {
                       
                     <Route path='/login' element={<LoginPage/>}/>
                     <Route path='/home' element={<HomePage />}/>
+                    <Route path='/admins' element={<AdminPage />}/>
                     <Route path='/tourists' element={<TouristsPage />}/>
                     <Route path='/guide' element={<GuidePage />}/>
                     <Route path='/confirmGuide' element={<GuideConfirmPage />}/>
