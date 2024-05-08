@@ -13,32 +13,30 @@ function ProfileEdit({ Toggle }) {
                     <button className='btn btn-primary m-1'>Change Password</button>
                 </div>
                 <div className="container bg-light rounded p-5 w-75 shadow">
-                    <form action="" id="profileForm">
-                        <div className="d-flex flex-column">
-                            <div className='d-flex flex-row justify-content-between'>
-                                <div className='d-flex flex-column w-100 me-2'>
-                                    <label  for="name">First Name:</label>
-                                    <input type="text" name="name" id="name" required></input>
-                                </div>
-                                <div className='d-flex flex-column w-100'>
-                                    <label for="name">Last Name:</label>
-                                    <input type="text" name="name" id="name" required></input>
-                                </div>
+                <form action="" id="profileForm">
+                    <div className="d-flex flex-column">
+                        <div className='d-flex flex-row justify-content-between'>
+                            <div className='d-flex flex-column w-100 me-2'>
+                                <label  for="name">First Name:</label>
+                                <input type="text" name="name" id="name" placeholder='Burak'  required></input>
                             </div>
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" id="email" required></input>
-    
-                            <label for="name">Phone Number:</label>
-                            <input type="text" name="name" id="name" required></input>
-                            
-                            <label for="name">BirthDate:</label>
-                            <input type="text" name="name" id="name" required></input>
-    
-                            <button className='btn btn-primary mt-2 mb-3' onclick="submitForm()">Submit</button>
+                            <div className='d-flex flex-column w-100'>
+                                <label for="name">Last Name:</label>
+                                <input type="text" name="name" id="name" placeholder='Sazlı' required></input>
+                            </div>
                         </div>
-    
-                    </form>
-            </div>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" placeholder='buraksazli@gmail.com' required></input>
+
+                        <label for="name">Phone Number:</label>
+                        <input type="text" name="name" id="name" placeholder='5512028390' required></input>
+                        
+                        <label for="name">BirthDate:</label>
+                        <input type="text" name="name" id="name" placeholder='1999-05-08' required></input>
+                    </div>
+                    <button className='btn btn-primary mt-2 mb-3' onclick="submitForm()">Submit</button>
+                </form>
+        </div>
         </div>
       </div>
       )

@@ -20,21 +20,21 @@ function Profile({ Toggle }) {
                         <div className='d-flex flex-row justify-content-between'>
                             <div className='d-flex flex-column w-100 me-2'>
                                 <label  for="name">First Name:</label>
-                                <input type="text" name="name" id="name" required></input>
+                                <input type="text" name="name" id="name" placeholder='Burak'  disabled></input>
                             </div>
                             <div className='d-flex flex-column w-100'>
                                 <label for="name">Last Name:</label>
-                                <input type="text" name="name" id="name" required></input>
+                                <input type="text" name="name" id="name" placeholder='Sazlı' disabled></input>
                             </div>
                         </div>
                         <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" required></input>
+                        <input type="email" name="email" id="email" placeholder='buraksazli@gmail.com' disabled></input>
 
                         <label for="name">Phone Number:</label>
-                        <input type="text" name="name" id="name" required></input>
+                        <input type="text" name="name" id="name" placeholder='5512028390' disabled></input>
                         
                         <label for="name">BirthDate:</label>
-                        <input type="text" name="name" id="name" required></input>
+                        <input type="text" name="name" id="name" placeholder='1999-05-08' disabled></input>
                     </div>
 
                 </form>
