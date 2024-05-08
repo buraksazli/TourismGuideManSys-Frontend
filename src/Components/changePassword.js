@@ -2,9 +2,7 @@ import React from 'react'
 import Nav from './Navbar';
 import Profileimg from '../assets/icons/profileimg.png'
 import { Link } from 'react-router-dom'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-
-function ProfileEdit({ Toggle }) {
+function changePassword( {Toggle} ) {
     return (
         <div className='px-3'>
             <Nav Toggle={Toggle} />
@@ -25,27 +23,18 @@ function ProfileEdit({ Toggle }) {
                 <div className="container bg-light rounded p-5 w-75 shadow">
                 <form action="" id="profileForm">
                     <div className="d-flex flex-column">
-                        <div className='d-flex flex-row justify-content-between'>
-                            <div className='d-flex flex-column w-100 me-2'>
-                                <label  for="name">First Name:</label>
-                                <input type="text" name="name" id="name" placeholder='Burak'  required></input>
-                            </div>
-                            <div className='d-flex flex-column w-100'>
-                                <label for="name">Last Name:</label>
-                                <input type="text" name="name" id="name" placeholder='Sazlı' required></input>
-                            </div>
-                        </div>
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" placeholder='buraksazli@gmail.com' required></input>
-
-                        <label for="name">Phone Number:</label>
-                        <input type="text" name="name" id="name" placeholder='5512028390' required></input>
                         
-                        <label for="name">BirthDate:</label>
-                        <input type="text" name="name" id="name" placeholder='1999-05-08' required></input>
+                        <label for="password">Old Password:</label>
+                        <input type="password" name="password" required></input>
+
+                        <label for="name">Old Password Again:</label>
+                        <input type="password" name="password-again"  required></input>
+                        
+                        <label for="name">New Password:</label>
+                        <input type="password" name="new-password"  required></input>
                     
                         <div className='text-center'>
-                        <button className='btn btn-primary ' onclick="submitForm()">Submit</button>
+                        <button className='btn btn-primary mt-2' onclick="submitForm()">Submit</button>
                     </div>
                     </div>
                     
@@ -57,4 +46,4 @@ function ProfileEdit({ Toggle }) {
       )
 }
 
-export default ProfileEdit
+export default changePassword
