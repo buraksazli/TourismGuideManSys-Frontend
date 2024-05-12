@@ -6,41 +6,30 @@ import ModalButton from './ModalButton';
 import Pagination from 'react-bootstrap/Pagination';
 import {getCurrentTours} from '../api/current_tours';
 function Home({ Toggle }) {   
-    const data = [
-        { id: 1, name: 'Örnek 1', value: 10, type: 'Urban',region:'Europe' },
-        { id: 2, name: 'Örnek 2', value: 20, type: 'Urban',region:'Europe' },
-        { id: 3, name: 'Örnek 3', value: 30, type: 'Urban',region:'Europe' },
-        { id: 4, name: 'Örnek 4', value: 30, type: 'Urban',region:'Europe' },
-        { id: 5, name: 'Örnek 5', value: 40, type: 'Urban' ,region:'Europe'},
-        { id: 6, name: 'Örnek 6', value: 50, type: 'Urban',region:'Europe' },
-        { id: 7, name: 'Örnek 7', value: 60, type: 'Urban',region:'Europe' },
-        { id: 8, name: 'Örnek 8', value: 70, type: 'Urban',region:'Europe' },
-        { id: 9, name: 'Örnek 9', value: 80, type: 'Urban',region:'Europe' }
-      ];
-
-      const [tour, setTour] = useState();
-      async function fetchtour() {
+      const [tour, setTour] = useState([]);
+      
+      useEffect( () => {
+        const fetchtour = async () => {
         try {
             const token = localStorage.getItem('Token');
             const response = await getCurrentTours(token);
             console.log(response);
+            setTour(response.data);
         } catch {
             console.log(localStorage.getItem('Token'))
             console.log('error');
         }
         
       }
-      useEffect( () => {
         fetchtour();
-
-      }, []);
+      });
 
       const [currentPage, setCurrentPage] = useState(1);
       const [itemsPerPage] = useState(5); 
     
       const indexOfLastItem = currentPage * itemsPerPage;
       const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-      const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+      const currentItems = tour.slice(indexOfFirstItem, indexOfLastItem);
     
       const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
@@ -74,7 +63,7 @@ function Home({ Toggle }) {
                     <div className='col-md-3 p-1'>           
                         <div className='p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded'>      
                             <div>           
-                                <h3 className='fs-2'>120</h3>          
+                                <h3 className='fs-2'>{tour.length}</h3>          
                                 <p className='fs-5'>Tours</p>            
                             </div>                
                             <i className='bi bi-globe-americas p-3 fs-1'></i>          
@@ -109,17 +98,17 @@ function Home({ Toggle }) {
                     <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.name}</td>
-                    <td>{item.value}</td>
-                    <td>{item.type}</td> 
+                    <td>{item.guide.username}</td>
+                    <td>{item.tourType}</td> 
                     <td>{item.region}</td> 
-                    <td>{item.date}</td>                   
+                    <td>{item.startDate}</td>                   
                     <td><ModalButton/></td>
                     </tr>
                 ))}
                 </tbody>
             </Table>
             <Pagination>
-                {Array.from({ length: Math.ceil(data.length / itemsPerPage) }).map((_, index) => (
+                {Array.from({ length: Math.ceil(tour.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
                     {index + 1}
                 </Pagination.Item>
