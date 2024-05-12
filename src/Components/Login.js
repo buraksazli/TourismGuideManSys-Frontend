@@ -2,36 +2,29 @@ import React from 'react';
 import logo from '../assets/icons/logo.png'
 import { useState  } from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+
+import { authanticateAdmin } from '../api/auth'
 function Login() {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(false);
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     try {
-      const response = await axios.post('https://tourism-guide-man.azurewebsites.net/api/Account/authenticate-admin', {
-        email,
-        password
-      });
-      console.log('Login Successful:', response.data);
-      navigate("/home");   
-    } catch (error) {
-      console.error('Login Error:', error);
-      setError('Login not successful. ');
+      const response = await authanticateAdmin(email, password);
+      console.log(response);
+      if(response.succeeded) {
+        localStorage.setItem('Token', response.data.jwToken);
+        setLoggedIn(true);
+        navigate('/home');
+      }      
+    } catch {
+        setError('Login not successful');
     }
   };
-
- /* const navigate = useNavigate();
-
-  const handleClick =  (e) => {    
-    e.preventDefault(); 
-    
-
-    navigate("/home");    
-  };*/
 
   return (
     <>

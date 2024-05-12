@@ -1,13 +1,11 @@
 import React from 'react'
 import Nav from './Navbar'
-import Rating from './Rating'
-import { useState  } from 'react';
+import { useState , useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal1 from 'react-bootstrap/Modal';
-
 import Table from 'react-bootstrap/Table';
-
 import Pagination from 'react-bootstrap/Pagination';
+
 function AdminList( {Toggle}) {
     const [show, setShow] = useState(false);
 
@@ -27,6 +25,10 @@ function AdminList( {Toggle}) {
       { id: 8, firstName: 'Örnek 8',lastName:'Sazlı' , username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  },
       { id: 9, firstName: 'Örnek 9',lastName:'Sazlı' , username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  }
       ];
+
+      useEffect( () => {
+        
+      }, [])
    
       const [currentPage, setCurrentPage] = useState(1);
       const [itemsPerPage] = useState(8); 

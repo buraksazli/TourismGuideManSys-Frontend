@@ -1,10 +1,10 @@
 import React from 'react'
 import Nav from './Navbar'
-import { useState  } from 'react';
+import { useState , useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import ModalButton from './ModalButton';
 import Pagination from 'react-bootstrap/Pagination';
-
+import {getCurrentTours} from '../api/current_tours';
 function Home({ Toggle }) {   
     const data = [
         { id: 1, name: 'Örnek 1', value: 10, type: 'Urban',region:'Europe' },
@@ -17,7 +17,24 @@ function Home({ Toggle }) {
         { id: 8, name: 'Örnek 8', value: 70, type: 'Urban',region:'Europe' },
         { id: 9, name: 'Örnek 9', value: 80, type: 'Urban',region:'Europe' }
       ];
-   
+
+      const [tour, setTour] = useState();
+      async function fetchtour() {
+        try {
+            const token = localStorage.getItem('Token');
+            const response = await getCurrentTours(token);
+            console.log(response);
+        } catch {
+            console.log(localStorage.getItem('Token'))
+            console.log('error');
+        }
+        
+      }
+      useEffect( () => {
+        fetchtour();
+
+      }, []);
+
       const [currentPage, setCurrentPage] = useState(1);
       const [itemsPerPage] = useState(5); 
     
