@@ -16,13 +16,12 @@ function Home({ Toggle }) {
             console.log(response);
             setTour(response.data);
         } catch {
-            console.log(localStorage.getItem('Token'))
             console.log('error');
         }
         
       }
         fetchtour();
-      });
+      },[]);
 
       const [currentPage, setCurrentPage] = useState(1);
       const [itemsPerPage] = useState(5); 

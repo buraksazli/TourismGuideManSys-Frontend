@@ -1,39 +1,39 @@
 import React from 'react'
 import Nav from './Navbar'
 import Rating from './Rating'
-import { useState  } from 'react';
+import { useState , useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal1 from 'react-bootstrap/Modal';
-
 import Table from 'react-bootstrap/Table';
-
 import Pagination from 'react-bootstrap/Pagination';
+import {getAllTourists} from '../api/tourist';
 function Tourists( { Toggle }) {
     const [show, setShow] = useState(false);
-
+    const [tourists, setTourists] = useState([]);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const data = [
-        { id: 1, firstName: 'Örnek 1', lastName:'Sazlı' , username:'abc' , birthDate:'07/07/1999',phoneNumber: '5555555555' },
-      { id: 2, firstName: 'Örnek 2', lastName:'Sazlı' ,username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  },
-      { id: 3, firstName: 'Örnek 3',lastName:'Sazlı' , username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  },
-      { id: 4, firstName: 'Örnek 4', lastName:'Sazlı' ,username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  },
-      { id: 5, firstName: 'Örnek 5', lastName:'Sazlı' ,username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  },
-      { id: 6, firstName: 'Örnek 6',lastName:'Sazlı' ,username:'abc' ,birthDate:'07/07/1999', phoneNumber: '5555555555'  },
-      { id: 7, firstName: 'Örnek 7', lastName:'Sazlı' ,username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  },
-      { id: 8, firstName: 'Örnek 8', lastName:'Sazlı' ,username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  },
-      { id: 6, firstName: 'Örnek 6', lastName:'Sazlı' ,username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  },
-      { id: 7, firstName: 'Örnek 7',lastName:'Sazlı' , username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555' },
-      { id: 8, firstName: 'Örnek 8',lastName:'Sazlı' , username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  },
-      { id: 9, firstName: 'Örnek 9',lastName:'Sazlı' , username:'abc' ,birthDate:'07/07/1999',phoneNumber: '5555555555'  }
-      ];
    
+      useEffect( () => {
+        const fetchtourist = async () => {
+            try {
+                const token = localStorage.getItem('Token');
+                const response = await getAllTourists(token);
+                console.log(response);
+                setTourists(response.data);
+            } catch {
+                console.log('error');
+            }
+            
+          }
+            fetchtourist();
+    }, [])
+
       const [currentPage, setCurrentPage] = useState(1);
       const [itemsPerPage] = useState(8); 
     
       const indexOfLastItem = currentPage * itemsPerPage;
       const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-      const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+      const currentItems = tourists.slice(indexOfFirstItem, indexOfLastItem);
     
       const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
@@ -51,7 +51,6 @@ function Tourists( { Toggle }) {
                     <th>Last Name</th>
                     <th>Username</th>
                     <th>Birth Date</th>
-                    <th>Phone Number</th>
                     <th>Comments</th>
                     <th>Delete</th>
                     <th>Ban</th>
@@ -66,7 +65,6 @@ function Tourists( { Toggle }) {
                     <td>{item.lastName}</td>
                     <td>{item.username}</td>
                     <td>{item.birthDate}</td>
-                    <td>{item.phoneNumber}</td>
                     <td>
                         <Button variant="primary" onClick={handleShow}>
                             See Ratings
@@ -114,7 +112,7 @@ function Tourists( { Toggle }) {
                 </tbody>
             </Table>
             <Pagination>
-                {Array.from({ length: Math.ceil(data.length / itemsPerPage) }).map((_, index) => (
+                {Array.from({ length: Math.ceil(tourists.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
                     {index + 1}
                 </Pagination.Item>

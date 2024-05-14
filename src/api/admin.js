@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const getAllTourists = async (token) => {
+export const getAllAdmins = async (token) => {
     const Token = token;
     try {
-        const response = await axios.get('https://tourism-guide-man.azurewebsites.net/api/v1/Tourist', {
+        const response = await axios.get('https://tourism-guide-man.azurewebsites.net/api/v1/Admin', {
             headers: {
                 'Authorization': `Bearer ${Token}` 
             }
@@ -12,4 +12,6 @@ export const getAllTourists = async (token) => {
     } catch (error) {
         throw error;
     }
+
+
 }
