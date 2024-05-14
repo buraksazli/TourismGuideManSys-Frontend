@@ -2,7 +2,7 @@ import React from 'react'
 import Nav from './Navbar'
 import { useState , useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
-import ModalButton from './ModalButton';
+import TouristModalButton from './TouristModalButton';
 import Pagination from 'react-bootstrap/Pagination';
 import {getCurrentTours} from '../api/current_tours';
 function Home({ Toggle }) {   
@@ -101,7 +101,7 @@ function Home({ Toggle }) {
                     <td>{item.tourType}</td> 
                     <td>{item.region}</td> 
                     <td>{item.startDate}</td>                   
-                    <td><ModalButton/></td>
+                    <td><TouristModalButton id={item.id}/></td>
                     </tr>
                 ))}
                 </tbody>
