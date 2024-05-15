@@ -4,11 +4,13 @@ import Button from 'react-bootstrap/Button';
 import Modal1 from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
+import Spinner from 'react-bootstrap/Spinner';
+
 function TouristModalButton({id}) {
     const [show, setShow] = useState(false);
     const [tourists, setTourists] = useState([]);
     const handleClose = () => setShow(false);
-
+    const [isLoading, setIsLoading] = useState(true);
     const fetchtouristtour = async (id) => {
             try {
                 const token = localStorage.getItem('Token');
@@ -22,7 +24,9 @@ function TouristModalButton({id}) {
 
     const handleShow = () => {
         setShow(true);
-        fetchtouristtour(id);
+        fetchtouristtour(id).then(() => {
+          setIsLoading(false);
+        });
     }
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -36,6 +40,7 @@ function TouristModalButton({id}) {
   
     return (
       <>
+
         <Button variant="primary" onClick={handleShow}>
           See Tourists
         </Button>
@@ -45,6 +50,10 @@ function TouristModalButton({id}) {
             <Modal1.Title>Tourist List </Modal1.Title>
           </Modal1.Header>
           <Modal1.Body style={{backgroundColor: "#DCDCDC"}}>
+          <div>{isLoading ? (
+            <div className='text-center'><Spinner animation="border" variant="info" /></div>
+          ) : (
+              
             <Table bordered hover>
                 <thead>
                 <tr>
@@ -74,7 +83,7 @@ function TouristModalButton({id}) {
                     </tr>
                 ))}
                 </tbody>
-            </Table>
+            </Table>)}</div>
             <Pagination>
                 {Array.from({ length: Math.ceil(tourists.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
