@@ -8,6 +8,7 @@ import {getCurrentTours} from '../api/current_tours';
 import Button from 'react-bootstrap/Button';
 import Modal1 from 'react-bootstrap/Modal';
 import TouristModalButton from './TouristModalButton';
+import RatingModalButton from './RatingModalButton';
 
 export default function TourList({ Toggle }) {
     const [show, setShow] = useState(false);
@@ -68,29 +69,7 @@ export default function TourList({ Toggle }) {
                     <td>{item.startDate}</td>                     
                     <td><TouristModalButton id={item.id}/></td>
                     <td>
-                        <Button variant="primary" onClick={handleShow}>
-                            See Ratings
-                        </Button>
-
-                        <Modal1 show={show} onHide={handleClose} dialogClassName='modal-dialog modal-dialog-scrollable' >
-                        <Modal1.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
-                            <Modal1.Title>Tourist's Ratings and Comments </Modal1.Title>
-                        </Modal1.Header>
-                        <Modal1.Body style={{backgroundColor: "#DCDCDC"}}>
-                            <Rating/>
-                            <Rating/>
-                            <Rating/>
-                            <Rating/>         
-                        </Modal1.Body>
-                        <Modal1.Footer style={{backgroundColor: "#F0F0F0"}}>
-                            <Button variant="secondary" onClick={handleClose}>
-                            Close
-                            </Button>
-                            <Button variant="primary" onClick={handleClose}>
-                            Save Changes
-                            </Button>
-                        </Modal1.Footer>
-                        </Modal1>
+                        <RatingModalButton id={item.id}/>
                     </td>
                     </tr>
                 ))}
