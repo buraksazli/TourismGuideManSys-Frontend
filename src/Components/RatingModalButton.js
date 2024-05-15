@@ -42,7 +42,7 @@ function RatingModalButton( {id}) {
             <div className='text-center'><Spinner animation="border" variant="info" /></div>
           ) : (
             ratings.map((item, index) => (                 
-                    <Rating touristName={item.tourist} value={item.value} comment={item.comment} />
+                    <Rating touristName={item.tourist.username} value={item.value} comment={item.comment} />
                     
                 )) )}</div>       
         </Modal1.Body>
