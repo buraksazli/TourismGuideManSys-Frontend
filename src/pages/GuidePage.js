@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState  } from 'react';
 import Sidebar from '../Components/Sidebar'
-import Tourists from '../Components/Tourists'
+import GuideList from '../Components/GuideList'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 function Guide() {
   const [toggle, setToggle] = useState(true);
@@ -17,7 +17,7 @@ function Guide() {
                       </div>}        
           {toggle &&  <div className='col-4 col-md-2'></div>}         
             <div className='col'>          
-                <Tourists Toggle={Toggle}/>                  
+                <GuideList Toggle={Toggle}/>                  
             </div> 
         </div>  
       </div>  

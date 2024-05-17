@@ -38,15 +38,17 @@ function Home({ Toggle }) {
             <Nav Toggle={Toggle} />  
             </div>
             <div>    
-            <div className='container-fluid'>        
-                <div className='row  '>    
+            <div className='container-fluid'>                      
+                <div className='row  '>
+                    
                     <h1>Home</h1>
                     <div className='col-md-3 p-1'>         
                        <div className='p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded'>           
                             <div>                                
                                 <h3 className='fs-2'>230</h3>                                
                                 <p className='fs-5'>Guides</p>                            
-                            </div>                       
+                            </div>  
+                                                 
                             <i className='bi bi-people-fill p-3 fs-1'></i>     
                        </div>              
                     </div>              
