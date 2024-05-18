@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
-function DeleteTouristFromTourButton() {
-
-    const removeTouristFromTour = async () => {
-        
-    }
+import {deleteTouristFromTour} from '../api/current_tours';
+function DeleteTouristFromTourButton( {touristTourId , onDelete}) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+    
     const handleClick = () => {
-        
+      onDelete(touristTourId);
     }
   return (
     <>

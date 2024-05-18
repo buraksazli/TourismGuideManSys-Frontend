@@ -7,6 +7,8 @@ import Modal1 from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
 import {getAllGuides} from '../api/guide';
+import BiographyModalButton from './BiographyModalButton';
+
 function GuideList( Toggle) {
     const [show, setShow] = useState(false);
     const [guides, setGuides] = useState([]);
@@ -66,7 +68,7 @@ function GuideList( Toggle) {
                     <td>{item.lastName}</td>
                     <td>{item.username}</td>
                     <td>{item.birthDate}</td>
-                    <td>{item.biography}</td>
+                    <td><BiographyModalButton biography={item.biography}/></td>
                     <td>
                         <Button variant="primary" onClick={handleShow}>
                             See Ratings

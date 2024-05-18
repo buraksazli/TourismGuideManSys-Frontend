@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import { getTourById } from '../api/current_tours';
 import Button from 'react-bootstrap/Button';
 import Modal1 from 'react-bootstrap/Modal';
@@ -6,6 +6,8 @@ import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
 import Spinner from 'react-bootstrap/Spinner';
 import DeleteTouristFromTourButton from './DeleteTouristFromTourButton';
+
+import {deleteTouristFromTour} from '../api/current_tours';
 function TouristModalButton({id}) {
     const [show, setShow] = useState(false);
     const [tourists, setTourists] = useState([]);
@@ -28,7 +30,16 @@ function TouristModalButton({id}) {
           setIsLoading(false);
         });
     }
-
+    
+    const removeTouristFromTour = async (touristTourId) => {
+      try {
+        const token = localStorage.getItem('Token');
+        await deleteTouristFromTour(token , touristTourId);
+        setTourists(tourists.filter(tourist => tourist.id !== touristTourId));
+      } catch {
+        console.log('error');
+      } 
+  }
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(7); 
   
@@ -74,7 +85,7 @@ function TouristModalButton({id}) {
                     <td>{item.tourist.username}</td>
                     <td>{item.tourist.birthDate}</td>
                     <td>    
-                    <DeleteTouristFromTourButton />  
+                    <DeleteTouristFromTourButton touristTourId = {item.id} onDelete={removeTouristFromTour}/>  
                        
                     </td>
                     </tr>

@@ -25,7 +25,19 @@ export const getTourById = async (token, id) => {
         return response.data;
     } catch (error) {
         throw error;
-      }
-    
-    
+      }      
+}
+
+export const deleteTouristFromTour = async (token, touristTourId) => {
+    const Token = token;
+    try {
+        const response = await axios.delete(`https://tourism-guide-man.azurewebsites.net/api/v1/TouristTour/${touristTourId}`, {
+            headers: {
+                'Authorization': `Bearer ${Token}` 
+            }
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+      } 
 }
