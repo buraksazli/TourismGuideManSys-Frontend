@@ -12,6 +12,24 @@ export const getAllAdmins = async (token) => {
     } catch (error) {
         throw error;
     }
+}
 
-
+export const addNewAdmin = async ({admin}) => {
+    const { firstName, lastName, email, userName, password, confirmPassword, phoneNumber, birthDate } = admin;
+    try {
+        const response = await axios.post('https://tourism-guide-man.azurewebsites.net/api/Account/register-admin', {
+            firstName,
+            lastName,
+            email,
+            userName,
+            password,
+            confirmPassword,
+            phoneNumber,
+            birthDate
+        }) 
+        console.log(firstName);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
 }

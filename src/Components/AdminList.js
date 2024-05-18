@@ -6,6 +6,7 @@ import Modal1 from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
 import {getAllAdmins} from '../api/admin';
+import AddNewAdminButton from './AddNewAdminButton';
 function AdminList( {Toggle}) {
     const [show, setShow] = useState(false);
     const [admins, setAdmins] = useState([]);
@@ -40,7 +41,7 @@ function AdminList( {Toggle}) {
             <Nav Toggle={Toggle} />     
             <div className='d-flex flex-row justify-content-between'>
                 <h1>User List</h1>
-                <Button className='h-100 mt-3 me-3'>Add New</Button>
+                <AddNewAdminButton/>
             </div>
             <Table responsive hover>
                 <thead>
