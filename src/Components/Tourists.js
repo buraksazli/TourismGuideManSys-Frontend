@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
 import {getAllTourists} from '../api/tourist';
 import TouristRatingModalButton from './TouristRatingModalButton';
+import AddNewTouristButton from './AddNewTouristButton';
 function Tourists( { Toggle }) {
     const [show, setShow] = useState(false);
     const [tourists, setTourists] = useState([]);
@@ -41,7 +42,7 @@ function Tourists( { Toggle }) {
             <Nav Toggle={Toggle} />     
             <div className='d-flex flex-row justify-content-between'>
                 <h1>User List</h1>
-                <Button className='h-100 mt-3 me-3'>Add New</Button>
+                <AddNewTouristButton/>
             </div>
             <Table responsive hover>
                 <thead>

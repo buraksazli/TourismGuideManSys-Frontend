@@ -88,10 +88,10 @@ function Home({ Toggle }) {
                     <th width="10">#</th>
                     <th width="170">Name</th>
                     <th width="170">Guide</th>
-                    <th width="100">Type</th>
-                    <th width="100">Region</th>
+                    <th width="10">Type</th>
+                    <th width="10">Region</th>
                     <th width="100">Date</th>
-                    <th width="10">Tourist List</th>
+                    <th width="50">Tourist List</th>
                 </tr>
                 </thead>
                 <tbody>
