@@ -3,10 +3,10 @@ import Nav from './Navbar'
 import Rating from './Rating'
 import { useState , useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
-import Modal1 from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
 import {getAllTourists} from '../api/tourist';
+import TouristRatingModalButton from './TouristRatingModalButton';
 function Tourists( { Toggle }) {
     const [show, setShow] = useState(false);
     const [tourists, setTourists] = useState([]);
@@ -60,35 +60,13 @@ function Tourists( { Toggle }) {
                 <tbody>
                 {currentItems.map((item, index) => (
                     <tr key={index}>
-                    <td>{item.id}</td>
+                    <td>{index + 1}</td>
                     <td>{item.firstName}</td>
                     <td>{item.lastName}</td>
                     <td>{item.username}</td>
                     <td>{item.birthDate}</td>
                     <td>
-                        <Button variant="primary" onClick={handleShow}>
-                            See Ratings
-                        </Button>
-
-                        <Modal1 show={show} onHide={handleClose} dialogClassName='modal-dialog modal-dialog-scrollable' >
-                        <Modal1.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
-                            <Modal1.Title>Ratings and Comments </Modal1.Title>
-                        </Modal1.Header>
-                        <Modal1.Body style={{backgroundColor: "#DCDCDC"}}>
-                            <Rating/>
-                            <Rating/>
-                            <Rating/>
-                            <Rating/>         
-                        </Modal1.Body>
-                        <Modal1.Footer style={{backgroundColor: "#F0F0F0"}}>
-                            <Button variant="secondary" onClick={handleClose}>
-                            Close
-                            </Button>
-                            <Button variant="primary" onClick={handleClose}>
-                            Save Changes
-                            </Button>
-                        </Modal1.Footer>
-                        </Modal1>
+                        <TouristRatingModalButton id={item.userId}/>
                     </td>
                     <td>
                     <button type="button" class="btn btn-dark">

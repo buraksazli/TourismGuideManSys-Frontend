@@ -14,7 +14,7 @@ function RatingModalButton( {id}) {
             try {
                 const token = localStorage.getItem('Token');
                 const response = await getRatingByTourId(token , id);
-                console.log(response.data);
+                console.log(response);
                 setRatings(response.data);
             } catch {
             console.log('error');
