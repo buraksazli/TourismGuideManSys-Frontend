@@ -35,3 +35,21 @@ export const getRatingByTouristId = async (token , TouristUserId) => {
         throw error;
       }   
 }
+
+export const getRatingByGuideId = async (token , GuideUserId) => {
+    const Token = token;
+    try {
+        const response = await axios.get('https://tourism-guide-man.azurewebsites.net/api/v1/Rating', {
+            params: {
+                'GuideUserId' : GuideUserId
+            },    
+            headers: {
+                'Authorization': `Bearer ${Token}` 
+            }
+            
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+      }   
+}
