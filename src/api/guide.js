@@ -16,3 +16,29 @@ export const getAllGuides = async (token , isVerified) => {
         throw error;
     }
 }
+
+export const addNewGuide = async ({guide}) => {
+    const biography = "New guide";
+    const languageIds = [0,1];
+    const { firstName, lastName, email, userName, password, confirmPassword, phoneNumber, TCNo, birthDate } = guide;
+    try {
+        const response = await axios.post('https://tourism-guide-man.azurewebsites.net/api/Account/register-guide', {
+            firstName,
+            lastName,
+            email,
+            userName,
+            password,
+            confirmPassword,
+            phoneNumber,
+            biography,
+            languageIds,
+            TCNo,
+            birthDate
+           
+        }) 
+        console.log(firstName);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}

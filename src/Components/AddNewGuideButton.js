@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import {addNewAdmin} from '../api/admin';
-export default function AddNewAdminButton() {
+import {addNewGuide} from '../api/guide';
+import Alert from 'react-bootstrap/Alert';
+
+function AddNewGuideButton() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [alert, setAlert] = useState(false);
     const [error, setError] = useState('');
 
-    const [admin, setAdmin] = useState({
+    const [guide, setGuide] = useState({
         firstName: "",
         lastName: "",
         email:"",
@@ -16,13 +19,14 @@ export default function AddNewAdminButton() {
         password:"",
         confirmPassword:"",
         phoneNumber:"",
+        TCNo:"",
         birthDate:""
     });
 
     function handleChange(e) {
         const value = e.target.value;
-        setAdmin({
-          ...admin,
+        setGuide({
+          ...guide,
           [e.target.name]: value
         });
       }
@@ -30,9 +34,13 @@ export default function AddNewAdminButton() {
       const handleSubmit = async (e) => {
         e.preventDefault(); 
         try {
-          const response = await addNewAdmin({admin});
-          if(!response.succeeded)
-            console.log(response.response.data.errors)
+          const response = await addNewGuide({guide});
+          if(response.succeeded){
+            setAlert(true);
+          } else {
+            console.log(response.response.data.errors);
+          }
+            
           console.log(response);     
         } catch (error){
             setError('Adding not successful');
@@ -48,36 +56,43 @@ export default function AddNewAdminButton() {
             </svg>
             Add New
         </Button>
+        
         <Modal show={show} onHide={handleClose} dialogClassName="modal-lg" >
           <Modal.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
-            <Modal.Title>Add New Admin </Modal.Title>
+            <Modal.Title>Add New Guide </Modal.Title>
           </Modal.Header>
           <Modal.Body style={{backgroundColor: "#DCDCDC"}}>
+            {alert && (<Alert variant="success" onClose={() => setAlert(false)} dismissible>
+                <Alert.Heading>Adding successful!</Alert.Heading>
+            </Alert>) }
             <h3 className='text-center'>Informations</h3>
             <form  onSubmit={handleSubmit}>
                 <div className="form-group mt-3 "> 
-                    <input type="text" className="form-control h-100 " name='firstName'  value={admin.firstName} onChange={handleChange} placeholder="Enter First Name"></input>
+                    <input type="text" className="form-control h-100 " name='firstName'  value={guide.firstName} onChange={handleChange} placeholder="Enter First Name"></input>
                 </div>
                 <div className="form-group mt-3">
-                    <input type="text" className="form-control" name='lastName'  value={admin.lastName} onChange={handleChange}  placeholder="Enter Last Name"></input>
+                    <input type="text" className="form-control" name='lastName'  value={guide.lastName} onChange={handleChange}  placeholder="Enter Last Name"></input>
                 </div>
                 <div className="form-group mt-3 "> 
-                    <input type="email" className="form-control h-100 " name='email' value={admin.email} onChange={handleChange} placeholder="Enter email"></input>
+                    <input type="email" className="form-control h-100 " name='email' value={guide.email} onChange={handleChange} placeholder="Enter email"></input>
                 </div>
                 <div className="form-group mt-3">
-                    <input type="text" className="form-control" name='userName' value={admin.userName} onChange={handleChange}  placeholder="Enter Username"></input>
+                    <input type="text" className="form-control" name='userName' value={guide.userName} onChange={handleChange}  placeholder="Enter Username"></input>
                 </div>
                 <div className="form-group mt-3 "> 
-                    <input type="password" className="form-control h-100 " name='password'  value={admin.password} onChange={handleChange}  placeholder="Enter Password"></input>
+                    <input type="password" className="form-control h-100 " name='password'  value={guide.password} onChange={handleChange}  placeholder="Enter Password"></input>
                 </div>
                 <div className="form-group mt-3">
-                    <input type="password" className="form-control" name='confirmPassword'  value={admin.confirmPassword} onChange={handleChange}  placeholder="Enter Password Again"></input>
+                    <input type="password" className="form-control" name='confirmPassword'  value={guide.confirmPassword} onChange={handleChange}  placeholder="Enter Password Again"></input>
                 </div>
                 <div className="form-group mt-3 "> 
-                    <input type="text" className="form-control h-100 "  name='phoneNumber' value={admin.phoneNumber} onChange={handleChange} placeholder="Enter Phone Number"></input>
+                    <input type="text" className="form-control h-100 "  name='phoneNumber' value={guide.phoneNumber} onChange={handleChange} placeholder="Enter Phone Number"></input>
+                </div>
+                <div className="form-group mt-3 "> 
+                    <input type="text" className="form-control h-100 "  name='TCNo' value={guide.TCNo} onChange={handleChange} placeholder="Enter TC No"></input>
                 </div>
                 <div className="form-group mt-3">
-                    <input type="date" className="form-control" name='birthDate'  value={admin.birthDate} onChange={handleChange}  placeholder="Enter Birth Date"></input>
+                    <input type="date" className="form-control" name='birthDate'  value={guide.birthDate} onChange={handleChange}  placeholder="Enter Birth Date"></input>
                 </div>
                 <div className='d-flex justify-content-center mt-3'>
                 <button type="submit" className="btn btn-dark w-100">Submit</button>
@@ -93,3 +108,5 @@ export default function AddNewAdminButton() {
     </div>
   )
 }
+
+export default AddNewGuideButton
