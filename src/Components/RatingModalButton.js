@@ -14,8 +14,9 @@ function RatingModalButton( {id}) {
             try {
                 const token = localStorage.getItem('Token');
                 const response = await getRatingByTourId(token , id);
-                console.log(response);
+                console.log(response.data);
                 setRatings(response.data);
+                console.log(response.data.length);
             } catch {
             console.log('error');
             }      
@@ -39,12 +40,24 @@ function RatingModalButton( {id}) {
         </Modal1.Header>
         <Modal1.Body style={{backgroundColor: "#DCDCDC"}}>
         <div>{isLoading ? (
-            <div className='text-center'><Spinner animation="border" variant="info" /></div>
-          ) : (
-            ratings.map((item, index) => (                 
-                    <Rating touristName={item.tourist.username} value={item.value} comment={item.comment} />
-                    
-                )) )}</div>       
+            <div className='text-center'>
+                    <Spinner animation="border" variant="info" />
+            </div>
+        ) : (
+            ratings.length === 0 ? (
+                <p>There are no ratings!!!!!</p>
+            ) : (
+                ratings.map((item, index) => (
+                    <Rating 
+                        key={index} 
+                        ratingImages={item.ratingImages} 
+                        touristName={item.tourist.username} 
+                        value={item.value} 
+                        comment={item.comment} 
+                    />
+                ))
+            )
+        )}</div>       
         </Modal1.Body>
         <Modal1.Footer style={{backgroundColor: "#F0F0F0"}}>
             <Button variant="secondary" onClick={handleClose}>

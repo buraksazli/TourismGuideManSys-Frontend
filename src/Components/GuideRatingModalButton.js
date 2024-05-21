@@ -51,12 +51,24 @@ export default function GuideRatingModalButton({id}) {
         </Modal.Header>
         <Modal.Body style={{backgroundColor: "#DCDCDC"}}>
         <div>{isLoading ? (
-            <div className='text-center'><Spinner animation="border" variant="info" /></div>
-          ) : (
-            ratings.map((item, index) => (                 
-                    <Rating key={index}  touristName={item.tourist.username} value={item.value} comment={item.comment} />
-                    
-                )) )}</div>       
+            <div className='text-center'>
+                    <Spinner animation="border" variant="info" />
+            </div>
+        ) : (
+            ratings.length === 0 ? (
+                <p>There are no ratings!!!!!</p>
+            ) : (
+                ratings.map((item, index) => (
+                    <Rating 
+                        key={index} 
+                        ratingImages={item.ratingImages} 
+                        touristName={item.tourist.username} 
+                        value={item.value} 
+                        comment={item.comment} 
+                    />
+                ))
+            )
+        )}</div>       
         </Modal.Body>
         <Modal.Footer style={{backgroundColor: "#F0F0F0"}}>
             <Button variant="secondary" onClick={handleClose}>
