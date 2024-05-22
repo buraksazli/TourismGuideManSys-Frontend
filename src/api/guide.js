@@ -60,3 +60,18 @@ export const confirmGuide = async (token, guideId, isVerified) => {
         throw error;
     }
 }
+
+export const deleteGuideById = async (token, id) => {
+    const Token = token;
+    try {
+        const response = await axios.delete(`https://tourism-guide-man.azurewebsites.net/api/v1/Guide/${id}`,{  
+            headers: {
+                'Authorization': `Bearer ${Token}` 
+            }
+            
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+      } 
+}
