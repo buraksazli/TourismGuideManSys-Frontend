@@ -42,3 +42,21 @@ export const addNewGuide = async ({guide}) => {
         throw error;
     }
 }
+
+export const confirmGuide = async (token, guideId, isVerified) => {
+    const Token = token;
+    try {
+        const response = await axios.put('https://tourism-guide-man.azurewebsites.net/api/v1/Guide', {
+            guideId,
+            isVerified
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+            
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}

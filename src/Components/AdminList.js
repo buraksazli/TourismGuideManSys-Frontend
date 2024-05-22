@@ -40,7 +40,7 @@ function AdminList( {Toggle}) {
     <div className='px-3'>       
             <Nav Toggle={Toggle} />     
             <div className='d-flex flex-row justify-content-between'>
-                <h1>User List</h1>
+                <h1>Admin List</h1>
                 <AddNewAdminButton/>
             </div>
             <Table responsive hover>

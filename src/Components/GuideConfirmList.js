@@ -6,6 +6,7 @@ import {getAllGuides} from '../api/guide';
 import Table from 'react-bootstrap/Table';
 
 import Pagination from 'react-bootstrap/Pagination';
+import ConfirmGuideButton from './ConfirmGuideButton';
 function GuideConfirmList({ Toggle }) {
     const [show, setShow] = useState(false);
     const [guides, setGuides] = useState([]);
@@ -54,7 +55,7 @@ function GuideConfirmList({ Toggle }) {
                 <tbody>
                 {currentItems.map((item, index) => (
                     <tr key={index}>
-                    <td>{item.id}</td>
+                    <td>{index + 1}</td>
                     <td>{item.firstName}</td>
                     <td>{item.lastName}</td>
                     <td>{item.username}</td>
@@ -70,16 +71,8 @@ function GuideConfirmList({ Toggle }) {
                         </svg>
                             Reject
                         </button>       
-                        <button type="button" class="btn btn-success ms-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                            Confirm
-                        </button>
-
-                    
-                        
+                        <ConfirmGuideButton id={item.userId}/>
+  
                     </td>
                     </tr>
                 ))}

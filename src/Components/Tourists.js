@@ -42,7 +42,7 @@ function Tourists( { Toggle }) {
     <div className='px-3'>       
             <Nav Toggle={Toggle} />     
             <div className='d-flex flex-row justify-content-between'>
-                <h1>User List</h1>
+                <h1>Tourist List</h1>
                 <AddNewTouristButton/>
             </div>
             <Table responsive hover>

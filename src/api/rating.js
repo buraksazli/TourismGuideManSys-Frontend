@@ -53,3 +53,33 @@ export const getRatingByGuideId = async (token , GuideUserId) => {
         throw error;
       }   
 }
+
+export const getAllReportedRatings = async (token ) => {
+    const Token = token;
+    try {
+        const response = await axios.get('https://tourism-guide-man.azurewebsites.net/api/v1/Report', {  
+            headers: {
+                'Authorization': `Bearer ${Token}` 
+            }
+            
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+      }   
+}
+
+export const deleteReportedRating = async (token, id) => {
+    const Token = token;
+    try {
+        const response = await axios.delete(`https://tourism-guide-man.azurewebsites.net/api/v1/Rating/${id}`,{  
+            headers: {
+                'Authorization': `Bearer ${Token}` 
+            }
+            
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+      } 
+}
