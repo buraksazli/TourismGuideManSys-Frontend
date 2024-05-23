@@ -49,7 +49,7 @@ function GuideConfirmList({ Toggle }) {
       const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <div className='px-3'>       
-            <Nav Toggle={Toggle} />     
+            <Nav Toggle={Toggle}/>     
             
             <h1>Guide Confirmation</h1>
             <Table  hover>

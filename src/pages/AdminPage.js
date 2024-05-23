@@ -3,6 +3,7 @@ import AdminList from '../Components/AdminList';
 import Sidebar from '../Components/Sidebar'
 import { useState } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import '../App.css';
 function AdminPage() {
     const [toggle, setToggle] = useState(true);
     const Toggle = () => {        
@@ -10,9 +11,9 @@ function AdminPage() {
     }
   return (
     <>
-    <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#d3d5e8"}}>
+    <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#F0F8FF"}}>
         <div className='row '>        
-        {toggle && <div className='col-4 col-md-2  vh-100 position-fixed bg-white'>      
+        {toggle && <div className='col-4 col-md-2  vh-100 position-fixed bg-white' style={{backgroundColor: "white "}}>      
           <Sidebar />     
                       </div>}        
           {toggle &&  <div className='col-4 col-md-2'></div>}         

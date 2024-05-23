@@ -7,7 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import Home from '../Components/Home'
 
 import { useState, useRef, useEffect } from 'react'
-
+import '../App.css';
 function HomePage() {
     const [toggle, setToggle] = useState(true);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
@@ -50,9 +50,9 @@ function HomePage() {
 
   return (
     <>
-    <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#d3d5e8"}}>
-        <div className='row'>        
-        {toggle && <div className='col-6 col-md-2  vh-100 position-fixed bg-white' ref={sidebarRef}>      
+    <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#F0F8FF"}}>
+        <div className='row' >        
+        {toggle && <div className='col-6 col-md-2  vh-100 position-fixed '  style={{backgroundColor: "white "}} ref={sidebarRef}>      
           <Sidebar />     
                       </div>}        
           {toggle &&  <div className='col-6 col-md-2 '></div>}         

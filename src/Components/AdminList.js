@@ -5,8 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Modal1 from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import {getAllAdmins} from '../api/admin';
 import AddNewAdminButton from './AddNewAdminButton';
+import '../App.css'
 function AdminList( {Toggle}) {
     const [show, setShow] = useState(false);
     const [admins, setAdmins] = useState([]);
@@ -43,8 +45,8 @@ function AdminList( {Toggle}) {
                 <h1>Admin List</h1>
                 <AddNewAdminButton/>
             </div>
-            <Table responsive hover>
-                <thead>
+            <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
+                <MDBTableHead>
                 <tr>
                     <th>#</th>
                     <th>First Name</th>
@@ -53,8 +55,8 @@ function AdminList( {Toggle}) {
                     <th>Birth Date</th>
                     <th>Phone Number</th>                    
                 </tr>
-                </thead>
-                <tbody>
+                </MDBTableHead>
+                <MDBTableBody>
                 {currentItems.map((item, index) => (
                     <tr key={index}>
                     <td>{index + 1}</td>
@@ -67,8 +69,8 @@ function AdminList( {Toggle}) {
                     
                     </tr>
                 ))}
-                </tbody>
-            </Table>
+                </MDBTableBody>
+            </MDBTable>
             <Pagination>
                 {Array.from({ length: Math.ceil(admins.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
