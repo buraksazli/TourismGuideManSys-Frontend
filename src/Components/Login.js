@@ -29,7 +29,7 @@ function Login() {
   return (
     <>
     
-    <div className="Auth-form-container">
+    <div className="Auth-form-container" style={{backgroundColor:"#f1f2f4"}}>
       <form className="Auth-form" onSubmit={handleSubmit}>
         <div className="Auth-form-content">
         <div className='d-flex flex-row justify-content-center'>

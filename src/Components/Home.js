@@ -6,9 +6,21 @@ import TouristModalButton from './TouristModalButton';
 import Pagination from 'react-bootstrap/Pagination';
 import {getCurrentTours} from '../api/current_tours';
 import '../App.css'
+import TourType from '../enums/TourType'
+import Regions from '../enums/Regions';
+import TourImage from '../enums/TourImage';
+
+
 function Home({ Toggle }) {   
       const [tour, setTour] = useState([]);
-      
+      const continentData = [
+        { continentName: 'North America', tourCount: 20 },
+        { continentName: 'South America', tourCount: 15 },
+        { continentName: 'Europe', tourCount: 10 },
+        { continentName: 'Africa', tourCount: 5 },
+        { continentName: 'Asia', tourCount: 12 },
+        { continentName: 'Australia', tourCount: 8 },
+    ];
       useEffect( () => {
         const fetchtour = async () => {
         try {
@@ -16,12 +28,14 @@ function Home({ Toggle }) {
             const response = await getCurrentTours(token);
             console.log(response);
             setTour(response.data);
+            
         } catch {
             console.log('error');
         }
         
       }
         fetchtour();
+        
       },[]);
 
       const [currentPage, setCurrentPage] = useState(1);
@@ -40,58 +54,116 @@ function Home({ Toggle }) {
             </div>
             <div>    
             <div className='container-fluid' style={{color:"007BFF "}}>                      
-                <div className='row  '>
+                <div className='row '>
+                    <div className='d-flex flex-md-row flex-column justify-content-between'>
+                    <h1 className='fw-bold text-dark'>Home</h1>
+                    <div className='d-flex flex-md-row flex-column text-center mb-2 mt-2'>
+                        
+                        <div className='me-2 '>
+                            <span className="badge badge-success w-100 fs-6 p-2 ">Guide Confirmation Requests </span><span className="badge rounded-pill badge-notification bg-danger">1</span>
+                        </div>
+                        <div className=''>
+                            <span className="badge badge-danger w-100 fs-6 p-2"> Reported Ratings </span><span className="badge rounded-pill badge-notification bg-danger">1</span>
+                        </div>
+                    </div></div>
                     
-                    <h1>Home</h1>
-                    <div className='col-md-3 p-1'>         
-                       <div className='p-3    shadow-sm d-flex justify-content-around align-items-center border rounded-5' style={{backgroundColor:"white"}}>           
-                            <div >                                
-                                <h3 className='fs-2'>230</h3>                                
-                                <p className='fs-5' >Guides</p>                            
-                            </div>  
-                            <div className='rounded-6 shadow' style={{backgroundColor: "#435ebe"}}>                  
-                                <i className='bi bi-people-fill p-2 fs-1 text-light'></i>   
-                            </div>    
-                       </div>              
-                    </div>              
-                    <div className='col-md-3 p-1'>             
-                        <div className='p-3  shadow-sm d-flex justify-content-around align-items-center border rounded-5' style={{backgroundColor:"white"}}>         
-                            <div>                     
-                                <h3 className='fs-2'>245</h3>              
-                                <p className='fs-5'>Tourists</p>                
+                    <div className='col-md-3 p-1'>     
+                             <div className='   rounded-5' > 
+                                 <div className='text-light p-1 ps-2' style={{backgroundColor:"#1e92cf"}}>TOTAL GUIDES</div>         
+                                 <div className='d-flex text-center justify-content-between p-2 ' style={{backgroundColor:"#289FE1"}} > 
+                                     <i className='bi bi-people-fill ps-3 fs-1' style={{color:"#81c0e3"}}></i>                       
+                                     <p className='fs-2 text-light pe-3'><b>245</b></p>              
+                   
+                                 </div>     
+                                 <div className='text-light p-1 ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#3fa6e9"}}>           
+                                     See more <i className="bi bi-caret-right"></i>
+                                 </div>            
+                             </div>                
+                         </div> 
+
+                                 
+                    <div className='col-md-3 p-1'>   
+                             
+                        <div className='   rounded-5' > 
+                            <div className='text-light p-1 ps-2' style={{backgroundColor:"#1e92cf"}}>TOTAL TOURISTS</div>         
+                            <div className='d-flex text-center justify-content-between p-2 ' style={{backgroundColor:"#289FE1"}} > 
+                                <i className='bi bi-person-fill fs-1 ps-3' style={{color:"#81c0e3"}}></i>                       
+                                <p className='fs-2 text-light pe-3'><b>245</b></p>              
+              
                             </div>     
-                            <div className='rounded-6 shadow' style={{backgroundColor: "#435ebe"}}>           
-                                <i className='bi bi-person-fill fs-1 p-2 text-light'></i>   
+                            <div className='text-light p-1 ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#3fa6e9"}}>           
+                                See more <i className="bi bi-caret-right"></i>
                             </div>            
                         </div>                
-                    </div>              
-                    <div className='col-md-3 p-1'>           
-                        <div className='p-3  shadow-sm d-flex justify-content-around align-items-center border rounded-5' style={{backgroundColor:"white"}}>      
-                            <div>           
-                                <h3 className='fs-2'>{tour.length}</h3>          
-                                <p className='fs-5'>Tours</p>            
-                            </div>    
-                            <div className='rounded-6 shadow' style={{backgroundColor: "#435ebe"}}>          
-                                <i className='bi bi-globe-americas p-2 fs-1 text-light'></i> 
-                            </div>           
-                        </div>                    
-                    </div>                   
-                    <div className='col-md-3 p-1'>                        
-                        <div className='p-3 shadow-sm d-flex justify-content-around align-items-center border rounded-5' style={{backgroundColor:"white"}}>    
-                            <div >                      
-                                <h3 className='fs-2'>10</h3>              
-                                <p className='fs-5'>Reported Ratings</p>          
-                            </div >  
-                            <div className='rounded-6 shadow' style={{backgroundColor: "#435ebe"}}>            
-                                <i className='bi bi-exclamation-circle-fill p-2 fs-1 text-light '></i>  
-                            </div>          
-                        </div>                
-                    </div>      
+                    </div>   
+
+                    <div className='col-md-3 p-1'>     
+                             <div className='   rounded-5' > 
+                                 <div className='text-light p-1 ps-2' style={{backgroundColor:"#1e92cf"}}>TOTAL TOURS</div>         
+                                 <div className='d-flex text-center justify-content-between p-2 ' style={{backgroundColor:"#289FE1"}} > 
+                                     <i className='bi bi-globe-americas fs-1 ps-3' style={{color:"#81c0e3"}}></i>                       
+                                     <p className='fs-2 text-light pe-3'><b>{tour.length}</b></p>              
+                   
+                                 </div>     
+                                 <div className='text-light p-1 ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#3fa6e9"}}>           
+                                     See more <i className="bi bi-caret-right"></i>
+                                 </div>            
+                             </div>                
+                         </div> 
+
+                         <div className='col-md-3 p-1'>     
+                             <div className='   rounded-5' > 
+                                 <div className='text-light p-1 ps-2' style={{backgroundColor:"#1e92cf"}}>TOTAL COMPANIES</div>         
+                                 <div className='d-flex text-center justify-content-between p-2 ' style={{backgroundColor:"#289FE1"}} > 
+                                     <i className='bi bi-building-fill fs-1 ps-3' style={{color:"#81c0e3"}}></i>                       
+                                     <p className='fs-2 text-light pe-3'><b>{tour.length}</b></p>              
+                   
+                                 </div>     
+                                 <div className='text-light p-1 ps-2 pe-2 d-flex justify-content-between ' style={{backgroundColor:"#3fa6e9"}}>           
+                                     See more <i className="bi bi-caret-right"></i>
+                                 </div>            
+                             </div>                
+                         </div>                    
+                         
                 </div>        
             </div>
-            <h1>Current Tours</h1>
-        
-            <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
+            <h1 className='mt-4 fw-bold text-dark'>Current Tours</h1>
+            <div className="row d-flex flex-row ">
+            {currentItems.slice(0, 3).map((item, index) => (
+                    <div className="col-12 col-md-3">
+                    <div className="card  ">
+                    <img src={TourImage[item.region]} className="card-img-top" width="200" height="160" alt="Hollywood Sign on The Hill"/>
+                    <div className="card-body">
+                        <div className='d-flex justify-content-between'>
+                            <h5 className="card-title fw-bold w-50 text-center rounded-5 p-1" style={{color:"white" , backgroundColor:"#f36944"}}>{item.name}</h5>
+                            <span className={`h-100 badge badge-${TourType[item.tourType].color} p-1`}>{TourType[item.tourType].name}</span>
+                        </div>
+                        <p className="card-text">
+                            <div className='d-flex flex-column'>
+                                <div>
+                                    <i className='bi bi-people fs-5 me-2' style={{ color:"#289FE1" }}></i>
+                                    <span>{item.guide.username}</span> 
+                                </div>
+                                <div>
+                                <i class="bi bi-globe me-2" style={{ color:"#289FE1" }}></i>
+                                <span>{Regions[item.region]}</span>
+                                </div>
+                                <TouristModalButton id={item.id}/>
+                        </div>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                ))}
+                <div className='col-2 justify-content-center align-items-center m-auto d-flex'> 
+                    <button className='btn btn-secondary fs-4'>See All <i class="bi bi-arrow-right-circle fs-4  "></i></button>
+                </div>
+                
+                
+  
+            </div>
+            
+            {/*<MDBTable align='middle'  className='border' style={{backgroundColor:"white"}}>
                 <MDBTableHead  >
                 <tr >
                     <th width="10">#</th>
@@ -103,16 +175,17 @@ function Home({ Toggle }) {
                     <th width="50">Tourist List</th>
                 </tr>
                 </MDBTableHead>
-                <MDBTableBody>
+                <MDBTableBody  >
                 {currentItems.map((item, index) => (
                     <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.name}</td>
                     <td>{item.guide.username}</td>
-                    <td>{item.tourType}</td> 
-                    <td>{item.region}</td> 
+                    <td > <span className={`badge badge-${TourType[item.tourType].color} p-1`}>{TourType[item.tourType].name}</span></td> 
+                    <td className='p-0 ps-4'>{Regions[item.region]}</td> 
                     <td>{item.startDate}</td>                   
-                    <td><TouristModalButton id={item.id}/></td>
+                    <td><TouristModalButton id={item.id} />
+                    </td>
                     </tr>
                 ))}
                 </MDBTableBody>
@@ -123,9 +196,11 @@ function Home({ Toggle }) {
                     {index + 1}
                 </Pagination.Item>
                 ))}
-            </Pagination>
-            </div> 
-        </div>    
+            </Pagination>*/}
+                    </div> 
+                    
+        </div> 
+        
         )
     }
     
