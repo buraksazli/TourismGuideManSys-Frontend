@@ -52,7 +52,7 @@ export default function AddNewAdminButton() {
           <Modal.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
             <Modal.Title>Add New Admin </Modal.Title>
           </Modal.Header>
-          <Modal.Body style={{backgroundColor: "#DCDCDC"}}>
+          <Modal.Body style={{backgroundColor: "#e3ebf7"}}>
             <h3 className='text-center'>Informations</h3>
             <form  onSubmit={handleSubmit}>
                 <div className="form-group mt-3 "> 

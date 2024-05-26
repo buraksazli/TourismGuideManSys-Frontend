@@ -42,7 +42,7 @@ function AdminList( {Toggle}) {
     <div className='px-3'>       
             <Nav Toggle={Toggle} />     
             <div className='d-flex flex-row justify-content-between'>
-                <h1>Admin List</h1>
+                <h1 className='fw-bold text-dark'>Admin List</h1>
                 <AddNewAdminButton/>
             </div>
             <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>

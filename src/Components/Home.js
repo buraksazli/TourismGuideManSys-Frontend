@@ -68,62 +68,64 @@ function Home({ Toggle }) {
                     </div></div>
                     
                     <div className='col-md-3 p-1'>     
-                             <div className='   rounded-5' > 
-                                 <div className='text-light p-1 ps-2' style={{backgroundColor:"#1e92cf"}}>TOTAL GUIDES</div>         
-                                 <div className='d-flex text-center justify-content-between p-2 ' style={{backgroundColor:"#289FE1"}} > 
-                                     <i className='bi bi-people-fill ps-3 fs-1' style={{color:"#81c0e3"}}></i>                       
-                                     <p className='fs-2 text-light pe-3'><b>245</b></p>              
-                   
-                                 </div>     
-                                 <div className='text-light p-1 ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#3fa6e9"}}>           
-                                     See more <i className="bi bi-caret-right"></i>
-                                 </div>            
-                             </div>                
-                         </div> 
-
-                                 
-                    <div className='col-md-3 p-1'>   
-                             
-                        <div className='   rounded-5' > 
-                            <div className='text-light p-1 ps-2' style={{backgroundColor:"#1e92cf"}}>TOTAL TOURISTS</div>         
-                            <div className='d-flex text-center justify-content-between p-2 ' style={{backgroundColor:"#289FE1"}} > 
-                                <i className='bi bi-person-fill fs-1 ps-3' style={{color:"#81c0e3"}}></i>                       
-                                <p className='fs-2 text-light pe-3'><b>245</b></p>              
-              
-                            </div>     
-                            <div className='text-light p-1 ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#3fa6e9"}}>           
-                                See more <i className="bi bi-caret-right"></i>
-                            </div>            
-                        </div>                
-                    </div>   
-
-                    <div className='col-md-3 p-1'>     
-                             <div className='   rounded-5' > 
-                                 <div className='text-light p-1 ps-2' style={{backgroundColor:"#1e92cf"}}>TOTAL TOURS</div>         
-                                 <div className='d-flex text-center justify-content-between p-2 ' style={{backgroundColor:"#289FE1"}} > 
-                                     <i className='bi bi-globe-americas fs-1 ps-3' style={{color:"#81c0e3"}}></i>                       
-                                     <p className='fs-2 text-light pe-3'><b>{tour.length}</b></p>              
-                   
-                                 </div>     
-                                 <div className='text-light p-1 ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#3fa6e9"}}>           
+                             <div className='   ' >       
+                                 <div className='d-flex text-center rounded-top- justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
+                                    <i className='bi bi-people-fill fs-1 ps-3' style={{color:"#289fe0"}}></i>
+                                    <div className='d-flex flex-column'>                     
+                                        <span className='fs-2 text-dark pe-3 '><b>25</b></span>
+                                        <span>Total Guides</span>  </div>              
+                                    </div>     
+                                 <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
                                      See more <i className="bi bi-caret-right"></i>
                                  </div>            
                              </div>                
                          </div> 
 
                          <div className='col-md-3 p-1'>     
-                             <div className='   rounded-5' > 
-                                 <div className='text-light p-1 ps-2' style={{backgroundColor:"#1e92cf"}}>TOTAL COMPANIES</div>         
-                                 <div className='d-flex text-center justify-content-between p-2 ' style={{backgroundColor:"#289FE1"}} > 
-                                     <i className='bi bi-building-fill fs-1 ps-3' style={{color:"#81c0e3"}}></i>                       
-                                     <p className='fs-2 text-light pe-3'><b>{tour.length}</b></p>              
-                   
-                                 </div>     
-                                 <div className='text-light p-1 ps-2 pe-2 d-flex justify-content-between ' style={{backgroundColor:"#3fa6e9"}}>           
+                             <div className='   rounded-5' >       
+                                 <div className='d-flex text-center justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
+                                    <i className='bi bi-person-fill fs-1 ps-3' style={{color:"#289fe0"}}></i>
+                                    <div className='d-flex flex-column'>                     
+                                        <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>{tour.length}</b></span>
+                                        <span>Total Tourists</span>  </div>              
+                                    </div>     
+                                 <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
                                      See more <i className="bi bi-caret-right"></i>
                                  </div>            
                              </div>                
-                         </div>                    
+                         </div> 
+
+                         <div className='col-md-3 p-1'>     
+                             <div className='   rounded-5' >       
+                                 <div className='d-flex text-center justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
+                                    <i className='bi bi-globe-americas fs-1 ps-3' style={{color:"#289fe0"}}></i>
+                                    <div className='d-flex flex-column'>                     
+                                        <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>{tour.length}</b></span>
+                                        <span>Total Tours</span>  </div>              
+                                    </div>     
+                                 <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
+                                     See more <i className="bi bi-caret-right"></i>
+                                 </div>            
+                             </div>                
+                         </div> 
+
+                         <div className='col-md-3 p-1'>     
+                             <div className='   rounded-5' >       
+                                 <div className='d-flex text-center justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
+                                    <i className='bi bi-building-fill fs-1 ps-3' style={{color:"#289fe0"}}></i>
+                                    <div className='d-flex flex-column'>                     
+                                        <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>{tour.length}</b></span>
+                                        <span>Total Companies</span>  </div>              
+                                    </div>     
+                                 <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
+                                     See more <i className="bi bi-caret-right"></i>
+                                 </div>            
+                             </div>                
+                         </div> 
+
+                    
+
+                                           
                          
                 </div>        
             </div>
@@ -137,15 +139,16 @@ function Home({ Toggle }) {
                         <div className='d-flex justify-content-between'>
                             <h5 className="card-title fw-bold w-50 text-center rounded-5 p-1" style={{color:"white" , backgroundColor:"#f36944"}}>{item.name}</h5>
                             <span className={`h-100 badge badge-${TourType[item.tourType].color} p-1`}>{TourType[item.tourType].name}</span>
+                            <span className={`h-100 badge badge-success p-1`}>{item.price} $</span>
                         </div>
                         <p className="card-text">
                             <div className='d-flex flex-column'>
                                 <div>
-                                    <i className='bi bi-people fs-5 me-2' style={{ color:"#289FE1" }}></i>
+                                    <i className='bi bi-people fs-5 me-2' style={{ color:"#2F5695" }}></i>
                                     <span>{item.guide.username}</span> 
                                 </div>
                                 <div>
-                                <i class="bi bi-globe me-2" style={{ color:"#289FE1" }}></i>
+                                <i class="bi bi-globe me-2" style={{ color:"#2F5695" }}></i>
                                 <span>{Regions[item.region]}</span>
                                 </div>
                                 <TouristModalButton id={item.id}/>

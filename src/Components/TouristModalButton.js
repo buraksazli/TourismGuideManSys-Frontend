@@ -2,7 +2,7 @@ import React, { useState , useEffect } from 'react'
 import { getTourById } from '../api/current_tours';
 import Button from 'react-bootstrap/Button';
 import Modal1 from 'react-bootstrap/Modal';
-import Table from 'react-bootstrap/Table';
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import Pagination from 'react-bootstrap/Pagination';
 import Spinner from 'react-bootstrap/Spinner';
 import DeleteTouristFromTourButton from './DeleteTouristFromTourButton';
@@ -63,13 +63,13 @@ function TouristModalButton({id}) {
           <Modal1.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
             <Modal1.Title>Tourist List </Modal1.Title>
           </Modal1.Header>
-          <Modal1.Body style={{backgroundColor: "#DCDCDC"}}>
+          <Modal1.Body style={{backgroundColor: "#e3ebf7"}}>
           <div>{isLoading ? (
             <div className='text-center'><Spinner animation="border" variant="info" /></div>
           ) : (
               
-            <Table bordered hover>
-                <thead>
+            <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
+                <MDBTableHead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
@@ -77,8 +77,8 @@ function TouristModalButton({id}) {
                     <th>Value</th>
                     
                 </tr>
-                </thead>
-                <tbody>
+                </MDBTableHead>
+                <MDBTableBody>
                 {currentItems.map((item, index) => (
                     <tr key={index}>
                     <td>{index+1}</td>
@@ -90,8 +90,8 @@ function TouristModalButton({id}) {
                     </td>
                     </tr>
                 ))}
-                </tbody>
-            </Table>)}</div>
+                </MDBTableBody>
+            </MDBTable>)}</div>
             <Pagination>
                 {Array.from({ length: Math.ceil(tourists.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>

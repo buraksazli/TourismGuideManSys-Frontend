@@ -41,7 +41,7 @@ function RatingModalButton( {id}) {
         <Modal1.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
             <Modal1.Title>Tour Ratings</Modal1.Title>
         </Modal1.Header>
-        <Modal1.Body style={{backgroundColor: "#DCDCDC"}}>
+        <Modal1.Body style={{backgroundColor: "#e3ebf7"}}>
         <div>{isLoading ? (
             <div className='text-center'>
                     <Spinner animation="border" variant="info" />

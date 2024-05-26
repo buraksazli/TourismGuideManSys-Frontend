@@ -10,7 +10,7 @@ function TourListPage() {
     }
   return (
     <>
-    <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#d3d5e8"}}>
+    <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#f1f2f4"}}>
         <div className='row '>        
         {toggle && <div className='col-4 col-md-2  vh-100 position-fixed bg-white'>      
           <Sidebar />     

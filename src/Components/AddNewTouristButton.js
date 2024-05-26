@@ -60,7 +60,7 @@ function AddNewTouristButton() {
           <Modal.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
             <Modal.Title>Add New Tourist </Modal.Title>
           </Modal.Header>
-          <Modal.Body style={{backgroundColor: "#DCDCDC"}}>
+          <Modal.Body style={{backgroundColor: "#e3ebf7"}}>
             {alert && (<Alert variant="success" onClose={() => setAlert(false)} dismissible>
                 <Alert.Heading>Adding successful!</Alert.Heading>
             </Alert>) }

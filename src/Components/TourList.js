@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from './Navbar';
 import { useState , useEffect } from 'react';
-import Table from 'react-bootstrap/Table';
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import Pagination from 'react-bootstrap/Pagination';
 import Rating from './Rating';
 import {getCurrentTours} from '../api/current_tours';
@@ -45,8 +45,8 @@ export default function TourList({ Toggle }) {
             <Nav Toggle={Toggle} />     
             
             <h1>Completed Tours</h1>
-            <Table  bordered hover>
-                <thead>
+            <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
+                <MDBTableHead>
                 <tr>
                 <th width="10">#</th>
                     <th width="170">Name</th>
@@ -57,8 +57,8 @@ export default function TourList({ Toggle }) {
                     <th>Tourist List</th>
                     <th>Ratings</th>
                 </tr>
-                </thead>
-                <tbody>
+                </MDBTableHead>
+                <MDBTableBody>
                 {currentItems.map((item, index) => (
                     <tr key={index}>
                     <td>{item.id}</td>
@@ -73,8 +73,8 @@ export default function TourList({ Toggle }) {
                     </td>
                     </tr>
                 ))}
-                </tbody>
-            </Table>
+                </MDBTableBody>
+            </MDBTable>
             <Pagination>
                 {Array.from({ length: Math.ceil(tour.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>

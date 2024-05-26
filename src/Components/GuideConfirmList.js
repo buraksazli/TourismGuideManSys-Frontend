@@ -2,8 +2,8 @@ import React from 'react'
 import Nav from './Navbar'
 import BiographyModalButton from './BiographyModalButton'
 import { useState , useEffect  } from 'react';
-import {deleteGuideById,getAllGuides} from '../api/guide';
-import Table from 'react-bootstrap/Table';
+import {confirmGuide,deleteGuideById,getAllGuides} from '../api/guide';
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 
 import Pagination from 'react-bootstrap/Pagination';
 import ConfirmGuideButton from './ConfirmGuideButton';
@@ -39,6 +39,17 @@ function GuideConfirmList({ Toggle }) {
         } 
     }
 
+    const confirmGuideById = async (userId) => {
+        try {
+            const token = localStorage.getItem('Token');
+            const response = await confirmGuide(token , userId, true);
+            console.log(response.data);
+            setGuides(guides.filter(guide => guide.userId !== userId));
+        } catch (error){
+            console.log(error);
+            }   
+    }
+
       const [currentPage, setCurrentPage] = useState(1);
       const [itemsPerPage] = useState(8); 
     
@@ -52,8 +63,8 @@ function GuideConfirmList({ Toggle }) {
             <Nav Toggle={Toggle}/>     
             
             <h1>Guide Confirmation</h1>
-            <Table  hover>
-                <thead>
+            <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
+                <MDBTableHead>
                 <tr>
                     <th>#</th>
                     <th>First Name</th>
@@ -63,8 +74,8 @@ function GuideConfirmList({ Toggle }) {
                     <th>Biography</th>
                     <th>Reject / Confirm</th>
                 </tr>
-                </thead>
-                <tbody>
+                </MDBTableHead>
+                <MDBTableBody>
                 {currentItems.map((item, index) => (
                     <tr key={index}>
                     <td>{index + 1}</td>
@@ -76,15 +87,15 @@ function GuideConfirmList({ Toggle }) {
                         <BiographyModalButton biography={item.biography}/>
                     </td>
                     <td>    
-                        <DeleteGuideButton id={item.userId} onDelete={deleteGuideById}/>
-                                 
-                        <ConfirmGuideButton id={item.userId}/>
+                        <DeleteGuideButton userId={item.userId} onDelete={deleteGuide}/>
+                        </td>  <td>
+                        <ConfirmGuideButton userId={item.userId} onSubmitFunc={confirmGuideById}/>
   
                     </td>
                     </tr>
                 ))}
-                </tbody>
-            </Table>
+                </MDBTableBody>
+            </MDBTable>
             <Pagination>
                 {Array.from({ length: Math.ceil(guides.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>

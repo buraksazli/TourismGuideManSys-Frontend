@@ -46,9 +46,9 @@ export const addNewGuide = async ({guide}) => {
 export const confirmGuide = async (token, guideId, isVerified) => {
     const Token = token;
     try {
-        const response = await axios.put('https://tourism-guide-man.azurewebsites.net/api/v1/Guide', {
-            guideId,
-            isVerified
+        const response = await axios.put(`https://tourism-guide-man.azurewebsites.net/api/v1/Guide/${guideId}`, {
+            'guideId' : guideId,
+            'isVerified':isVerified
         }, {
             headers: {
                 'Authorization': `Bearer ${token}`

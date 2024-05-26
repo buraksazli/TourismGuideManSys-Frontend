@@ -11,7 +11,7 @@ function AdminPage() {
     }
   return (
     <>
-    <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#F0F8FF"}}>
+    <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#f1f2f4"}}>
         <div className='row '>        
         {toggle && <div className='col-4 col-md-2  vh-100 position-fixed bg-white' style={{backgroundColor: "white "}}>      
           <Sidebar />     

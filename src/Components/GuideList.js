@@ -4,7 +4,7 @@ import Rating from './Rating'
 import { useState , useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal1 from 'react-bootstrap/Modal';
-import Table from 'react-bootstrap/Table';
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import Pagination from 'react-bootstrap/Pagination';
 import {deleteGuideById, getAllGuides} from '../api/guide';
 import BiographyModalButton from './BiographyModalButton';
@@ -60,8 +60,8 @@ function GuideList( Toggle) {
                 <AddNewGuideButton/>
                 
             </div>
-            <Table responsive hover>
-                <thead>
+            <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
+                <MDBTableHead>
                 <tr>
                     <th>#</th>
                     <th>First Name</th>
@@ -74,11 +74,11 @@ function GuideList( Toggle) {
                     <th>Ban</th>
                     
                 </tr>
-                </thead>
-                <tbody>
+                </MDBTableHead>
+                <MDBTableBody>
                 {currentItems.map((item, index) => (
                     <tr key={index}>
-                    <td>{item.id}</td>
+                    <td>{index + 1}</td>
                     <td>{item.firstName}</td>
                     <td>{item.lastName}</td>
                     <td>{item.username}</td>
@@ -88,7 +88,7 @@ function GuideList( Toggle) {
                         <GuideRatingModalButton id={item.userId}/>
                     </td>
                     <td>
-                    <DeleteGuideButton id={item.userId} onDelete={deleteGuide}/>
+                    <DeleteGuideButton userId={item.userId} onDelete={deleteGuide}/>
                     </td>
                     <td>
                      <BanButton username={item.username}/>
@@ -96,8 +96,8 @@ function GuideList( Toggle) {
                     
                     </tr>
                 ))}
-                </tbody>
-            </Table>
+                </MDBTableBody>
+            </MDBTable>
             <Pagination>
                 {Array.from({ length: Math.ceil(guides.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>

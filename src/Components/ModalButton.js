@@ -45,7 +45,7 @@ function ModalButton() {
           <Modal1.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
             <Modal1.Title>Tourist List </Modal1.Title>
           </Modal1.Header>
-          <Modal1.Body style={{backgroundColor: "#DCDCDC"}}>
+          <Modal1.Body style={{backgroundColor: "#e3ebf7"}}>
             <Table bordered hover>
                 <thead>
                 <tr>

@@ -3,12 +3,13 @@ import Nav from './Navbar'
 import Rating from './Rating'
 import { useState , useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
-import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
 import {getAllTourists} from '../api/tourist';
 import TouristRatingModalButton from './TouristRatingModalButton';
 import AddNewTouristButton from './AddNewTouristButton';
 import BanButton from './BanButton';
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+
 function Tourists( { Toggle }) {
     const [show, setShow] = useState(false);
     const [tourists, setTourists] = useState([]);
@@ -45,8 +46,8 @@ function Tourists( { Toggle }) {
                 <h1>Tourist List</h1>
                 <AddNewTouristButton/>
             </div>
-            <Table responsive hover>
-                <thead>
+            <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
+                <MDBTableHead>
                 <tr>
                     <th>#</th>
                     <th>First Name</th>
@@ -58,8 +59,8 @@ function Tourists( { Toggle }) {
                     <th>Ban</th>
                     
                 </tr>
-                </thead>
-                <tbody>
+                </MDBTableHead>
+                <MDBTableBody>
                 {currentItems.map((item, index) => (
                     <tr key={index}>
                     <td>{index + 1}</td>
@@ -84,8 +85,8 @@ function Tourists( { Toggle }) {
                     
                     </tr>
                 ))}
-                </tbody>
-            </Table>
+                </MDBTableBody>
+            </MDBTable>
             <Pagination>
                 {Array.from({ length: Math.ceil(tourists.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>

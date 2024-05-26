@@ -9,6 +9,8 @@ import Pagination from 'react-bootstrap/Pagination';
 import { getAllReportedRatings } from '../api/rating';
 import { deleteReportedRating } from '../api/rating';
 import DeleteReportedButton from './DeleteReportedButton';
+
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 function ReportedRatingList({ Toggle }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -53,16 +55,16 @@ function ReportedRatingList({ Toggle }) {
             <Nav Toggle={Toggle} />     
             
             <h1>Reported Ratings</h1>
-            <Table  hover>
-                <thead>
+            <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
+                <MDBTableHead>
                 <tr>
                     <th>#</th>
                     <th>Reported by</th>
                     <th>Reported Comment</th>
                     <th>Ignore/Delete</th>
                 </tr>
-                </thead>
-                <tbody>
+                </MDBTableHead>
+                <MDBTableBody>
                 {currentItems.map((item, index) => (
                     <tr key={index}>
                     <td>{index}</td>
@@ -76,7 +78,7 @@ function ReportedRatingList({ Toggle }) {
                         <Modal1.Header style={{backgroundColor: "#F0F0F0"}} closeButton>
                             <Modal1.Title>Tourist's Ratings and Comments </Modal1.Title>
                         </Modal1.Header>
-                        <Modal1.Body style={{backgroundColor: "#DCDCDC"}}>
+                        <Modal1.Body style={{backgroundColor: "#e3ebf7"}}>
                             {item.description}
                                      
                         </Modal1.Body>
@@ -105,8 +107,8 @@ function ReportedRatingList({ Toggle }) {
                     </td>
                     </tr>
                 ))}
-                </tbody>
-            </Table>
+                </MDBTableBody>
+            </MDBTable>
             <Pagination>
                 {Array.from({ length: Math.ceil(reported.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
