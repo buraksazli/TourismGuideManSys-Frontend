@@ -33,3 +33,17 @@ export const addNewTourist = async ({tourist}) => {
         throw error;
     }
 }
+
+export const deleteTouristById = async (token, id) => {
+    const Token = token;
+    try {
+        const response = await axios.delete(`https://tourism-guide-man.azurewebsites.net/api/v1/Tourist/${id}`,{  
+            headers: {
+                'Authorization': `Bearer ${Token}` 
+            } 
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+      } 
+}

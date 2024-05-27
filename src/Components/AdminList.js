@@ -45,7 +45,8 @@ function AdminList( {Toggle}) {
                 <h1 className='fw-bold text-dark'>Admin List</h1>
                 <AddNewAdminButton/>
             </div>
-            <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
+            <div className='table-responsive'>
+            <MDBTable align='middle'  className='border table-responsive' style={{backgroundColor:"white" }}>
                 <MDBTableHead>
                 <tr>
                     <th>#</th>
@@ -70,7 +71,7 @@ function AdminList( {Toggle}) {
                     </tr>
                 ))}
                 </MDBTableBody>
-            </MDBTable>
+            </MDBTable></div>
             <Pagination>
                 {Array.from({ length: Math.ceil(admins.length / itemsPerPage) }).map((_, index) => (
                 <Pagination.Item key={index} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
