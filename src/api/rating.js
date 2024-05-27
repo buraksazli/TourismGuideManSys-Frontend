@@ -83,3 +83,16 @@ export const deleteReportedRating = async (token, id) => {
         throw error;
       } 
 }
+
+export const deleteJustReport = async (token, id) => {
+    try {
+        const response = await axios.delete(`https://tourism-guide-man.azurewebsites.net/api/v1/Report/${id}`,{  
+            headers: {
+                'Authorization': `Bearer ${token}` 
+            }  
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
