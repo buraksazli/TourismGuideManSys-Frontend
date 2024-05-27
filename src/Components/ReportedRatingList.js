@@ -65,7 +65,7 @@ function ReportedRatingList({ Toggle }) {
     <div className='px-3'>       
             <Nav Toggle={Toggle} />     
             
-            <h1>Reported Ratings</h1>
+            <h1 className='fw-bold text-dark'>Reported Ratings</h1>
             <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
                 <MDBTableHead>
                 <tr>
@@ -104,11 +104,10 @@ function ReportedRatingList({ Toggle }) {
                         </Modal1>
                     </td>
                     <td>    
-                       <DeleteJustReportButton ratingId={item.id} onDelete={deleteJustReportById}/>      
-                        <DeleteReportedButton ratingId={item.ratingId} onDelete={deleteReportedRatings}/>
-
-                    
-                        
+                       <DeleteJustReportButton ratingId={item.id} onDelete={deleteJustReportById}/>   
+                    </td>
+                    <td>    
+                        <DeleteReportedButton ratingId={item.ratingId} onDelete={deleteReportedRatings}/>  
                     </td>
                     </tr>
                 ))}

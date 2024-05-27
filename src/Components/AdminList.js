@@ -40,7 +40,7 @@ function AdminList( {Toggle}) {
       const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <div className='px-3'>       
-            <Nav Toggle={Toggle} />     
+              
             <div className='d-flex flex-row justify-content-between'>
                 <h1 className='fw-bold text-dark'>Admin List</h1>
                 <AddNewAdminButton/>

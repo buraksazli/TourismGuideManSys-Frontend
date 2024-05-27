@@ -49,11 +49,8 @@ function Home({ Toggle }) {
   
     return (        
         <div className='px-3 '>
-            <div className='border-none'>     
-                <Nav Toggle={Toggle} />  
-            </div>
             <div>    
-            <div className='container-fluid' style={{color:"007BFF "}}>                      
+            <div className='' style={{color:"007BFF "}}>                      
                 <div className='row '>
                     <div className='d-flex flex-md-row flex-column justify-content-between'>
                     <h1 className='fw-bold text-dark'>Home</h1>

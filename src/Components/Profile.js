@@ -2,53 +2,146 @@ import React from 'react'
 import Nav from './Navbar';
 import Profileimg from '../assets/icons/profileimg.png'
 import { Link } from 'react-router-dom'
-
+import {
+    MDBCol,
+    MDBContainer,
+    MDBRow,
+    MDBCard,
+    MDBCardText,
+    MDBCardBody,
+    MDBCardImage,
+    MDBBtn,
+    MDBBreadcrumb,
+    MDBBreadcrumbItem,
+    MDBProgress,
+    MDBProgressBar,
+    MDBIcon,
+    MDBListGroup,
+    MDBListGroupItem
+  } from 'mdb-react-ui-kit';
 function Profile({ Toggle }) {
   return (
     <div className='px-3'>
         <Nav Toggle={Toggle} />
-        <div className='d-flex flex-row p-4 mt-5 w-75 ms-auto me-auto  '>
-            <div className='bg-light rounded w-25 me-1 d-flex flex-column shadow '>
-                <img className='ms-auto me-auto mt-3' src={Profileimg} alt="Profile" style={{height:125, width:125}} />
-                <h1 className='ms-auto me-auto'>Profile</h1>
-                
-                <Link to={'/profile'}  className='text-dark  text-center h-100 mb-1  text-decoration-none list-group-item list-group-item-primary list-group-item-action'>                  
-                    <span >My Profile</span>       
-                </Link> 
-                <Link to={'/editProfile'}  className='text-dark  text-center h-100 mb-1  text-decoration-none list-group-item list-group-item-primary list-group-item-action'>                  
-                    <span >Edit Profile</span>       
-                </Link> 
-                <Link to={'/changePassword'}  className='text-dark  text-center h-100 mb-1  text-decoration-none list-group-item list-group-item-primary list-group-item-action'>                  
-                    <span >Change Password</span>       
-                </Link> 
-               
-            </div>
-            <div className="container bg-light rounded p-5 w-75 shadow ">
-                <form action="" id="profileForm">
-                    <div className="d-flex flex-column">
-                        <div className='d-flex flex-row justify-content-between'>
-                            <div className='d-flex flex-column w-100 me-2'>
-                                <label  for="name">First Name:</label>
-                                <input type="text" name="name" id="name" placeholder='Burak'  disabled></input>
-                            </div>
-                            <div className='d-flex flex-column w-100'>
-                                <label for="name">Last Name:</label>
-                                <input type="text" name="name" id="name" placeholder='Sazlı' disabled></input>
-                            </div>
-                        </div>
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" placeholder='buraksazli@gmail.com' disabled></input>
+        <section >
+      <MDBContainer >
+        <MDBRow>
+          <MDBCol>
+            <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
+              <MDBBreadcrumbItem>
+                <a href='#'>Home</a>
+              </MDBBreadcrumbItem>
+              <MDBBreadcrumbItem>
+                <a href="#">User Profile</a>
+              </MDBBreadcrumbItem>
+            </MDBBreadcrumb>
+          </MDBCol>
+        </MDBRow>
 
-                        <label for="name">Phone Number:</label>
-                        <input type="text" name="name" id="name" placeholder='5512028390' disabled></input>
-                        
-                        <label for="name">BirthDate:</label>
-                        <input type="text" name="name" id="name" placeholder='1999-05-08' disabled></input>
-                    </div>
+        <MDBRow>
+          <MDBCol lg="4">
+            <MDBCard className="mb-4">
+              <MDBCardBody className="text-center">
+                <h2 className=" text-dark mb-1 fw-bold">Burak Sazlı</h2>
+                <p className="text-muted mb-1">@buraksazli</p>
+                <p className="text-muted mb-1">Admin</p>
+                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                <div className="d-flex justify-content-center mb-2">
+                  <MDBBtn>Follow</MDBBtn>
+                  <MDBBtn outline className="ms-1">Message</MDBBtn>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
 
-                </form>
-        </div>
-    </div>
+            <MDBCard className="mb-4 mb-lg-0">
+              <MDBCardBody className="p-0">
+                <MDBListGroup flush className="rounded-3">
+                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                    <MDBIcon fas icon="globe fa-lg text-warning" />
+                    <MDBCardText>https://mdbootstrap.com</MDBCardText>
+                  </MDBListGroupItem>
+                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                    <MDBIcon fab icon="github fa-lg" style={{ color: '#333333' }} />
+                    <MDBCardText>mdbootstrap</MDBCardText>
+                  </MDBListGroupItem>
+                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                    <MDBIcon fab icon="twitter fa-lg" style={{ color: '#55acee' }} />
+                    <MDBCardText>@mdbootstrap</MDBCardText>
+                  </MDBListGroupItem>
+                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                    <MDBIcon fab icon="instagram fa-lg" style={{ color: '#ac2bac' }} />
+                    <MDBCardText>mdbootstrap</MDBCardText>
+                  </MDBListGroupItem>
+                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
+                    <MDBIcon fab icon="facebook fa-lg" style={{ color: '#3b5998' }} />
+                    <MDBCardText>mdbootstrap</MDBCardText>
+                  </MDBListGroupItem>
+                </MDBListGroup>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+          <MDBCol lg="8">
+            <MDBCard className="mb-4 h-100">
+              <MDBCardBody>
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>First Name</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Last Name</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">example@example.com</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Username</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Email</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Phone Number</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Birth Date</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </section>
   </div>
   )
 }

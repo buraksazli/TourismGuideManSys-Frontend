@@ -44,7 +44,7 @@ export default function TourList({ Toggle }) {
     <div className='px-3'>       
             <Nav Toggle={Toggle} />     
             
-            <h1>Completed Tours</h1>
+            <h1 className='fw-bold text-dark'>Completed Tours</h1>
             <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
                 <MDBTableHead>
                 <tr>

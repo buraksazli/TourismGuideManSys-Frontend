@@ -62,7 +62,7 @@ function GuideConfirmList({ Toggle }) {
     <div className='px-3'>       
             <Nav Toggle={Toggle}/>     
             
-            <h1>Guide Confirmation</h1>
+            <h1 className='fw-bold text-dark'>Guide Confirmation</h1>
             <MDBTable align='middle' className='border' style={{backgroundColor:"white" }}>
                 <MDBTableHead>
                 <tr>

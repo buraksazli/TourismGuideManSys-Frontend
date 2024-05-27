@@ -56,7 +56,7 @@ function GuideList( Toggle) {
     <div classNameName='px-3'>       
             <Nav Toggle={Toggle} />     
             <div className='d-flex flex-row justify-content-between'>
-                <h1>Guide List</h1>
+                <h1 className='fw-bold text-dark'>Guide List</h1>
                 <AddNewGuideButton/>
                 
             </div>
