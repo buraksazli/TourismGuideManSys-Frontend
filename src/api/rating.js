@@ -18,6 +18,24 @@ export const getRatingByTourId = async (token , tourId) => {
       }   
 }
 
+export const getRatingByRatingId = async (token , ratingId) => {
+    const Token = token;
+    try {
+        const response = await axios.get('https://tourism-guide-man.azurewebsites.net/api/v1/Rating', {
+            params: {
+                'ratingId' : ratingId
+            },    
+            headers: {
+                'Authorization': `Bearer ${Token}` 
+            }
+            
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+      }   
+}
+
 export const getRatingByTouristId = async (token , TouristUserId) => {
     const Token = token;
     try {
@@ -85,6 +103,19 @@ export const deleteReportedRating = async (token, id) => {
 }
 
 export const deleteJustReport = async (token, id) => {
+    try {
+        const response = await axios.delete(`https://tourism-guide-man.azurewebsites.net/api/v1/Report/${id}`,{  
+            headers: {
+                'Authorization': `Bearer ${token}` 
+            }  
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteRatingById = async (token, id) => {
     try {
         const response = await axios.delete(`https://tourism-guide-man.azurewebsites.net/api/v1/Report/${id}`,{  
             headers: {

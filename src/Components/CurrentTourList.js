@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { useState , useEffect } from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 import {getCurrentTours} from '../api/current_tours';
@@ -8,7 +8,7 @@ import TourType from '../enums/TourType'
 import Regions from '../enums/Regions';
 import { Table , Form } from 'react-bootstrap';
 
-export default function TourList() {
+function CurrentTourList() {
     const [show, setShow] = useState(false);
     const [tour, setTour] = useState([]);
     const [filter, setFilter] = useState('');
@@ -42,7 +42,7 @@ export default function TourList() {
         const fetchtour = async () => {
         try {
             const token = localStorage.getItem('Token');
-            const response = await getCurrentTours(2,token);
+            const response = await getCurrentTours(1,token);
             console.log(response);
             setTour(response.data);
         } catch {
@@ -55,7 +55,7 @@ export default function TourList() {
    
   return (
     <div className='px-3'>          
-        <h1 className='fw-bold text-dark'>Completed Tours</h1>
+        <h1 className='fw-bold text-dark'>Ongoing Tours</h1>
         <div className="container mt-2">
         <Form.Control
           type="text"
@@ -114,3 +114,5 @@ export default function TourList() {
         </div> 
   )
 }
+
+export default CurrentTourList

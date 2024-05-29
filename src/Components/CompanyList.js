@@ -3,14 +3,13 @@ import { useState , useEffect } from 'react';
 import Modal1 from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
-import {getAllAdmins} from '../api/admin';
-import AddNewAdminButton from './AddNewAdminButton';
-import '../App.css'
-import { Form } from 'react-bootstrap';
+import { getAllCompanies } from '../api/company'
+import {Button, Form } from 'react-bootstrap';
+import AddNewCompanyButton from './AddNewCompanyButton';
 
-function AdminList( {Toggle}) {
+function CompanyList() {
     const [show, setShow] = useState(false);
-    const [admins, setAdmins] = useState([]);
+    const [companies, setCompanies] = useState([]);
     const [filter, setFilter] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
@@ -23,11 +22,11 @@ function AdminList( {Toggle}) {
         setCurrentPage(pageNumber);
       };
 
-      const filteredData = admins.filter(
+      const filteredData = companies.filter(
         (item) =>
-          item.userId.toLowerCase().includes(filter.toLowerCase()) ||
-          item.firstName.toLowerCase().includes(filter.toLowerCase()) ||
-          item.lastName.toLowerCase().includes(filter.toLowerCase())
+          item.name.toLowerCase().includes(filter.toLowerCase()) ||
+          item.email.toLowerCase().includes(filter.toLowerCase()) ||
+          item.address.toLowerCase().includes(filter.toLowerCase())
       );
     
       const paginatedData = filteredData.slice(
@@ -38,18 +37,18 @@ function AdminList( {Toggle}) {
       const totalPages = Math.ceil(filteredData.length / itemsPerPage);
     
     useEffect( () => {
-        const fetchadmin = async () => {
+        const fetchcompany = async () => {
             try {
                 const token = localStorage.getItem('Token');
-                const response = await getAllAdmins(token);
+                const response = await getAllCompanies(token);
                 console.log(response);
-                setAdmins(response.data);
+                setCompanies(response.data);
             } catch {
                 console.log('error');
             }
             
           }
-            fetchadmin();
+            fetchcompany();
     }, [])
    
       
@@ -57,8 +56,8 @@ function AdminList( {Toggle}) {
     <div className='px-3'>       
               
             <div className='d-flex flex-row justify-content-between'>
-                <h1 className='fw-bold text-dark'>Admin List</h1>
-                <div className='mt-2 me-3'><AddNewAdminButton/></div>
+                <h1 className='fw-bold text-dark'>Company List</h1>
+                <div className='mt-2 me-3'><AddNewCompanyButton/></div>
             </div>
       <div className="container mt-2">
         <Form.Control
@@ -72,11 +71,9 @@ function AdminList( {Toggle}) {
           <thead>
             <tr>
             <th className='fw-bold'>#</th>
-              <th className='fw-bold'>Id</th>
-              <th className='fw-bold'>Name</th>
-              <th className='fw-bold'>Surname</th>
-              <th className='fw-bold'>username</th>
-              <th className='fw-bold'>Birth Date</th>
+              <th className='fw-bold'>Company Name</th>
+              <th className='fw-bold'>Email</th>
+              <th className='fw-bold'>Address</th>
               <th className='fw-bold'>Phone Number</th>
             </tr>
           </thead>
@@ -84,11 +81,9 @@ function AdminList( {Toggle}) {
             {paginatedData.map((item,index) => (
               <tr key={index}>
                 <td>{index+1}</td>
-                <td>{item.userId}</td>
-                <td>{item.firstName}</td>
-                <td>{item.lastName} </td>
-                <td>{item.username}</td>
-                <td>{item.birthDate}</td>
+                <td>{item.name}</td>
+                <td>{item.email}</td>
+                <td>{item.address} </td>
                 <td>{item.phoneNumber}</td>
               </tr>
             ))}
@@ -115,4 +110,4 @@ function AdminList( {Toggle}) {
   )
 }
 
-export default AdminList
+export default CompanyList

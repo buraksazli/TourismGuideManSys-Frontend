@@ -98,3 +98,30 @@ h1 {
     overflow-x: hidden;
     overflow-y: auto; 
   }
+
+  .hover {
+    background-color: #DC4C64;
+  }
+  .hover:hover{
+    background-color: #e1092d;
+  }
+
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .user-profile-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95px;
+    height:95px;
+    background-color: #f36944;
+    color: #ffffff;
+    font-size: 50px;
+    border-radius: 50%;
+    font-weight: 800;
+  }
+  

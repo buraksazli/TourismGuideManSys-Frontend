@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-function DeleteReportedButton({ratingId , onDelete}) {
+function DeleteReportedButton({ratingId ,id, onDelete}) {
     const handleClick = () => {
-        onDelete(ratingId);
+        onDelete(ratingId , id);
       }
 
   return (

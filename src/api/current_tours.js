@@ -1,9 +1,12 @@
 import axios from "axios";
 
-export const getCurrentTours = async (token) => {
+export const getCurrentTours = async (status,token) => {
     const Token = token;
     try {
         const response = await axios.get('https://tourism-guide-man.azurewebsites.net/api/v1/Tour', {
+            params: {
+                'TourStatus': status
+            },  
             headers: {
                 'Authorization': `Bearer ${Token}` 
             }

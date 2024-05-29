@@ -1,28 +1,18 @@
 import React from 'react'
+import { useState , useEffect } from 'react';
 import logo from '../assets/icons/logo.png'
 import { Link , useLocation } from 'react-router-dom'
 import '../App.css'
-import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardText,
-  MDBCardBody,
-  MDBCardImage,
-  MDBBtn,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem
-} from 'mdb-react-ui-kit';
+import ProfileImage from './ProfileImage'
+import { Collapse } from 'react-bootstrap';
 function Sidebar(){ 
     const location = useLocation();
+    const userName = localStorage.getItem('username');
+    const [open, setOpen] = useState(false);
 
-
+    const handleToggle = () => {
+      setOpen(!open);
+    };
     const currentPage = location.pathname;
 
   return (
@@ -33,11 +23,11 @@ function Sidebar(){
        className="collapse d-lg-block sidebar collapse bg-white"
        >
     <div className="position-sticky">
-      <div className="list-group list-group-flush mx-3 mt-4 pt-4">
+      <div className="list-group list-group-flush mx-2 mt-4 pt-4">
               
                   <Link
                 to={'/home'}
-                className="list-group-item list-group-item-action py-2 ripple"
+                className=' text-decoration-none ps-3 p-2 list-group-item list-group-item-light list-group-item-action'
                 style={currentPage === '/home' ? { backgroundColor: "#e6e7e8",color:"black",borderLeft: "solid", borderLeftWidth: "4px", borderLeftColor:"#f36944" } : { backgroundColor:"white", color:"black" }}
                 >        
                         <i className='bi bi-house fs-5 me-3' style={currentPage === '/home' ? {color:"#f36944" } : { color:"#f36944" }}></i>       
@@ -67,6 +57,14 @@ function Sidebar(){
                         <i className='bi bi-people fs-5 me-3' style={currentPage === '/guides' ? {color:"#f36944" } : { color:"#f36944" }}></i>        
                             <span >Guides</span>     
                 </Link>
+                <Link 
+                    to={'/companies'}  
+                    className=' text-decoration-none ps-3 p-2 list-group-item list-group-item-light list-group-item-action' 
+                    style={currentPage === '/companies' ? { backgroundColor: "#e6e7e8",color:"black",borderLeft: "solid", borderLeftWidth: "4px", borderLeftColor:"#f36944" } : { backgroundColor:"white",color:"black" }}
+                    >           
+                        <i className='bi bi-building fs-5 me-3' style={currentPage === '/guides' ? {color:"#f36944" } : { color:"#f36944" }}></i>        
+                            <span >Companies</span>     
+                </Link>
                 <Link to={'/confirmGuide'}  
                     className=' text-decoration-none ps-3  p-2 list-group-item list-group-item-light list-group-item-action' 
                     style={currentPage === '/confirmGuide' ? { backgroundColor: "#e6e7e8",color:"black",borderLeft: "solid", borderLeftWidth: "4px", borderLeftColor:"#f36944" } : { backgroundColor:"white",color:"black" }}
@@ -75,14 +73,47 @@ function Sidebar(){
                             <span >Guide Confirmation</span>     
                 
                 </Link>
-                <Link 
-                    to={'/tours'}  
-                    className=' text-decoration-none ps-3 p-2 list-group-item list-group-item-light list-group-item-action' 
-                    style={currentPage === '/tours' ? { backgroundColor: "#e6e7e8",color:"black",borderLeft: "solid", borderLeftWidth: "4px", borderLeftColor:"#f36944" } : { backgroundColor:"white",color:"black" }}
-                    >       
-                        <i className='bi bi-globe-americas fs-5 me-3' style={currentPage === '/tours' ? {color:"#f36944" } : { color:"#f36944" }}></i>        
-                            <span >Tours</span>    
-                </Link>
+                <div
+                onClick={handleToggle}
+                className='text-decoration-none ps-3 p-2 list-group-item list-group-item-light list-group-item-action'
+                style={currentPage === '/tours' || currentPage === '/currentTours' ? {
+                  backgroundColor: "#e6e7e8",
+                  color: "black",
+                  borderLeft: "solid",
+                  borderLeftWidth: "4px",
+                  borderLeftColor: "#f36944"
+                } : {
+                  backgroundColor: "white",
+                  color: "black"
+                }}
+              >
+                <div className='d-flex'>
+                <i className='bi bi-globe-americas fs-5 me-3' style={currentPage === '/tours' ? { color: "#f36944" } : { color: "#f36944" }}></i>
+                <div className='pt-1 d-flex justify-content-between w-100'>
+                  <div>Tours</div>
+                  <div ><i class="bi bi-caret-down-fill text-dark"></i></div>
+                </div>
+                </div>
+              </div>
+              
+              <Collapse in={open}>
+                <div className="ms-2">
+                  <Link 
+                    to="/currentTours"
+                    className='d-block text-decoration-none  p-2 list-group-item list-group-item-light list-group-item-action'
+                    style={{ backgroundColor: "white", color: "black" }}
+                  >
+                  <i class="bi bi-caret-right-fill text-dark"></i>  Ongoing Tours
+                  </Link>
+          <Link 
+            to="/tours"
+            className='d-block text-decoration-none  p-2 list-group-item list-group-item-light list-group-item-action'
+            style={{ backgroundColor: "white", color: "black" }}
+          >
+            <i class="bi bi-caret-right-fill text-dark"></i>Completed Tours
+          </Link>
+        </div>
+      </Collapse>
                 <Link to={'/reportedRatings'}  
                     className=' text-decoration-none ps-3 p-2 list-group-item list-group-item-light list-group-item-action' 
                     style={currentPage === '/reportedRatings' ? { backgroundColor: "#e6e7e8",color:"black",borderLeft: "solid", borderLeftWidth: "4px", borderLeftColor:"#f36944" } : { backgroundColor:"white",color:"black" }}
@@ -104,11 +135,13 @@ function Sidebar(){
                     style={currentPage === '/login' ? { backgroundColor: "#11c4ae" } : { backgroundColor:"white" }}
                     >
                         <i className='bi bi-power fs-5 me-3' style={{ color:"#f36944" }}></i>    
-                        Logout       
+                        <span className='text-dark'>Logout</span>       
                 </Link> 
-
-                <div className="text-center mt-2  border  rounded p-2" >           
-                        <b >Welcome Burak</b>                          
+                
+                <div className="text-center mt-2  border  rounded p-2" >  
+                
+             
+                        <b >Welcome @{userName}</b>                          
                 </div> 
         
       </div>
@@ -133,10 +166,16 @@ function Sidebar(){
       </button>
 
       <div className="navbar-brand ms-4" href="#">
-      <img src={logo} alt="Logo" style={{height:40, width:40, backgroundColor: "white"}} />Travely
+        <img src={logo} alt="Logo" style={{height:40, width:40, backgroundColor: "white"}} />Travely
       </div>
-      <div className='border p-2 rounded-5 me-3 border-dark'><i class="bi bi-box-arrow-right"></i> Logout</div>
+      
+      <Link to={'/login'} >  
+        <div className='border p-2 rounded-5 me-3 border-danger  hover'>
+          <i class="bi bi-box-arrow-right text-light "></i> <span className='text-light'>Logout</span>
+        </div>
+      </Link>
     </div>
+
   </nav>
     </header>
 

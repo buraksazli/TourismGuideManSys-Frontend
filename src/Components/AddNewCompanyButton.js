@@ -1,28 +1,24 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import {addNewAdmin} from '../api/admin';
-export default function AddNewAdminButton() {
+import { addNewCompany } from '../api/company';
+
+function AddNewCompanyButton() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [error, setError] = useState('');
-
-    const [admin, setAdmin] = useState({
-        firstName: "",
-        lastName: "",
-        email:"",
-        userName:"",
-        password:"",
-        confirmPassword:"",
-        phoneNumber:"",
-        birthDate:""
+    const [company, setCompany] = useState({
+        name: "",        
+        email:"",       
+        address:"",       
+        phoneNumber:""
     });
 
     function handleChange(e) {
         const value = e.target.value;
-        setAdmin({
-          ...admin,
+        setCompany({
+          ...company,
           [e.target.name]: value
         });
       }
@@ -30,7 +26,8 @@ export default function AddNewAdminButton() {
       const handleSubmit = async (e) => {
         e.preventDefault(); 
         try {
-          const response = await addNewAdmin({admin});
+            const token = localStorage.getItem('Token');
+          const response = await addNewCompany({company,token});
           if(!response.succeeded)
             console.log(response.response.data.errors)
           console.log(response);     
@@ -56,29 +53,19 @@ export default function AddNewAdminButton() {
             <h3 className='text-center'>Informations</h3>
             <form  onSubmit={handleSubmit}>
                 <div className="form-group mt-3 "> 
-                    <input type="text" className="form-control h-100 " name='firstName'  value={admin.firstName} onChange={handleChange} placeholder="Enter First Name"></input>
-                </div>
-                <div className="form-group mt-3">
-                    <input type="text" className="form-control" name='lastName'  value={admin.lastName} onChange={handleChange}  placeholder="Enter Last Name"></input>
+                    <input type="text" className="form-control h-100 " name='name'  value={company.name} onChange={handleChange} placeholder="Enter Company Name"></input>
                 </div>
                 <div className="form-group mt-3 "> 
-                    <input type="email" className="form-control h-100 " name='email' value={admin.email} onChange={handleChange} placeholder="Enter email"></input>
+                    <input type="email" className="form-control h-100 " name='email' value={company.email} onChange={handleChange} placeholder="Enter email"></input>
                 </div>
                 <div className="form-group mt-3">
-                    <input type="text" className="form-control" name='userName' value={admin.userName} onChange={handleChange}  placeholder="Enter Username"></input>
+                    <input type="text" className="form-control" name='address' value={company.address} onChange={handleChange}  placeholder="Enter Address"></input>
                 </div>
+               
                 <div className="form-group mt-3 "> 
-                    <input type="password" className="form-control h-100 " name='password'  value={admin.password} onChange={handleChange}  placeholder="Enter Password"></input>
+                    <input type="text" className="form-control h-100 "  name='phoneNumber' value={company.phoneNumber} onChange={handleChange} placeholder="Enter Phone Number"></input>
                 </div>
-                <div className="form-group mt-3">
-                    <input type="password" className="form-control" name='confirmPassword'  value={admin.confirmPassword} onChange={handleChange}  placeholder="Enter Password Again"></input>
-                </div>
-                <div className="form-group mt-3 "> 
-                    <input type="text" className="form-control h-100 "  name='phoneNumber' value={admin.phoneNumber} onChange={handleChange} placeholder="Enter Phone Number"></input>
-                </div>
-                <div className="form-group mt-3">
-                    <input type="date" className="form-control" name='birthDate'  value={admin.birthDate} onChange={handleChange}  placeholder="Enter Birth Date"></input>
-                </div>
+
                 <div className='d-flex justify-content-center mt-3'>
                 <button type="submit" className="btn btn-dark w-100">Submit</button>
                 </div>
@@ -93,3 +80,5 @@ export default function AddNewAdminButton() {
     </div>
   )
 }
+
+export default AddNewCompanyButton

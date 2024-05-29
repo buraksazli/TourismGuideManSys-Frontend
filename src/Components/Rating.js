@@ -3,8 +3,9 @@ import ReactStars from "react-rating-stars-component";
 import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import DeleteRatingButton from './DeleteRatingButton';
 
-function Rating({ratingImages , touristName, value , comment})  {
+function Rating({id,ratingImages , touristName, value , comment})  {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -22,7 +23,7 @@ function Rating({ratingImages , touristName, value , comment})  {
                 />
                 <b>{touristName}</b></div>
                 <div className='h-100'>
-                  <button className='btn btn-danger h-25  '>Delete</button> 
+                  <DeleteRatingButton id={id}/> 
                 </div>
               
             </div>

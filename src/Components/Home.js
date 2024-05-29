@@ -9,20 +9,21 @@ import '../App.css'
 import TourType from '../enums/TourType'
 import Regions from '../enums/Regions';
 import TourImage from '../enums/TourImage';
+import { getDashboardInfos } from '../api/dashboard';
+import { Link } from 'react-router-dom';
 
 
 function Home({ Toggle }) {   
       const [tour, setTour] = useState([]);
-      const continentData = [
-        { continentName: 'North America', tourCount: 20 },
-        { continentName: 'South America', tourCount: 15 },
-        { continentName: 'Europe', tourCount: 10 },
-        { continentName: 'Africa', tourCount: 5 },
-        { continentName: 'Asia', tourCount: 12 },
-        { continentName: 'Australia', tourCount: 8 },
-    ];
-      useEffect( () => {
-        const fetchtour = async () => {
+      const [dashboard, setDashboard] = useState({
+        totalNonVerifiedGuides: 0,
+        totalReports: 0,
+        totalTourists: 0,
+        totalTours: 0,
+        totalVerifiedGuides: 0
+      });
+          
+    const fetchtour = async () => {
         try {
             const token = localStorage.getItem('Token');
             const response = await getCurrentTours(token);
@@ -34,7 +35,29 @@ function Home({ Toggle }) {
         }
         
       }
-        fetchtour();
+
+      const getDashboard = async () => {
+        try {
+            const token = localStorage.getItem('Token');
+            const response = await getDashboardInfos(token);
+            console.log(response);
+            setDashboard({
+                totalNonVerifiedGuides: response.totalNonVerifiedGuides,
+                totalReports: response.totalReports,
+                totalTourists: response.totalTourists,
+                totalTours: response.totalTours,
+                totalVerifiedGuides: response.totalVerifiedGuides
+              });
+        } catch (error){
+            console.log(error);
+        }
+        
+      }
+
+      
+      useEffect(()  => {
+         getDashboard();
+         fetchtour();
         
       },[]);
 
@@ -57,10 +80,10 @@ function Home({ Toggle }) {
                     <div className='d-flex flex-md-row flex-column text-center mb-2 mt-2'>
                         
                         <div className='me-2 '>
-                            <span className="badge badge-success w-100 fs-6 p-2 ">Guide Confirmation Requests </span><span className="badge rounded-pill badge-notification bg-danger">1</span>
+                            <span className="badge badge-success w-100 fs-6 p-2 ">Guide Confirmation Requests </span><span className="badge rounded-pill badge-notification bg-danger">{dashboard.totalNonVerifiedGuides}</span>
                         </div>
                         <div className=''>
-                            <span className="badge badge-danger w-100 fs-6 p-2"> Reported Ratings </span><span className="badge rounded-pill badge-notification bg-danger">1</span>
+                            <span className="badge badge-danger w-100 fs-6 p-2"> Reported Ratings </span><span className="badge rounded-pill badge-notification bg-danger">{dashboard.totalReports}</span>
                         </div>
                     </div></div>
                     
@@ -69,12 +92,14 @@ function Home({ Toggle }) {
                                  <div className='d-flex text-center rounded-top- justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
                                     <i className='bi bi-people-fill fs-1 ps-3' style={{color:"#289fe0"}}></i>
                                     <div className='d-flex flex-column'>                     
-                                        <span className='fs-2 text-dark pe-3 '><b>25</b></span>
+                                        <span className='fs-2 text-dark pe-3 '><b>{dashboard.totalVerifiedGuides}</b></span>
                                         <span>Total Guides</span>  </div>              
-                                    </div>     
-                                 <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
-                                     See more <i className="bi bi-caret-right"></i>
-                                 </div>            
+                                    </div> 
+                                    <Link to="/guide"> 
+                                        <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
+                                            See more <i className="bi bi-caret-right"></i>
+                                        </div>
+                                    </Link>          
                              </div>                
                          </div> 
 
@@ -83,12 +108,14 @@ function Home({ Toggle }) {
                                  <div className='d-flex text-center justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
                                     <i className='bi bi-person-fill fs-1 ps-3' style={{color:"#289fe0"}}></i>
                                     <div className='d-flex flex-column'>                     
-                                        <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>{tour.length}</b></span>
+                                        <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>{dashboard.totalTourists}</b></span>
                                         <span>Total Tourists</span>  </div>              
-                                    </div>     
-                                 <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
-                                     See more <i className="bi bi-caret-right"></i>
-                                 </div>            
+                                    </div>    
+                                    <Link to="/tourists">  
+                                        <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
+                                            See more <i className="bi bi-caret-right"></i>
+                                        </div>            
+                                    </Link> 
                              </div>                
                          </div> 
 
@@ -97,12 +124,14 @@ function Home({ Toggle }) {
                                  <div className='d-flex text-center justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
                                     <i className='bi bi-globe-americas fs-1 ps-3' style={{color:"#289fe0"}}></i>
                                     <div className='d-flex flex-column'>                     
-                                        <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>{tour.length}</b></span>
+                                        <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>{dashboard.totalTours}</b></span>
                                         <span>Total Tours</span>  </div>              
-                                    </div>     
-                                 <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
-                                     See more <i className="bi bi-caret-right"></i>
-                                 </div>            
+                                    </div>  
+                                    <Link to="/tours">     
+                                        <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
+                                            See more <i className="bi bi-caret-right"></i>
+                                        </div>     
+                                     </Link>    
                              </div>                
                          </div> 
 
@@ -111,12 +140,14 @@ function Home({ Toggle }) {
                                  <div className='d-flex text-center justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
                                     <i className='bi bi-building-fill fs-1 ps-3' style={{color:"#289fe0"}}></i>
                                     <div className='d-flex flex-column'>                     
-                                        <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>{tour.length}</b></span>
+                                        <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>2</b></span>
                                         <span>Total Companies</span>  </div>              
-                                    </div>     
-                                 <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
-                                     See more <i className="bi bi-caret-right"></i>
-                                 </div>            
+                                    </div> 
+                                    <Link to="/companies"> 
+                                        <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
+                                            See more <i className="bi bi-caret-right"></i>
+                                        </div> 
+                                    </Link>              
                              </div>                
                          </div> 
 
@@ -126,7 +157,7 @@ function Home({ Toggle }) {
                          
                 </div>        
             </div>
-            <h1 className='mt-4 fw-bold text-dark'>Current Tours</h1>
+            <h1 className='mt-4 fw-bold text-dark'>Ongoing Tours</h1>
             <div className="row d-flex flex-row ">
             {currentItems.slice(0, 3).map((item, index) => (
                     <div className="col-12 col-md-3">
@@ -155,8 +186,9 @@ function Home({ Toggle }) {
                     </div>
                 </div>
                 ))}
+                
                 <div className='col-2 justify-content-center align-items-center m-auto d-flex'> 
-                    <button className='btn btn-secondary fs-4'>See All <i class="bi bi-arrow-right-circle fs-4  "></i></button>
+                  <Link to="/currentTours">   <button className='btn btn-secondary fs-4'>See All <i class="bi bi-arrow-right-circle fs-4  "></i></button></Link> 
                 </div>
                 
                 

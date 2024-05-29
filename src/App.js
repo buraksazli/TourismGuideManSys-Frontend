@@ -11,6 +11,8 @@ import GuideConfirmPage from './pages/GuideConfirmPage'
 import TourListPage from './pages/TourListPage'
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import ReportedRatingsPage from './pages/ReportedRatingsPage'
+import CompanyPage from './pages/CompanyPage'
+import CurrentTourPage from './pages/CurrentTourPage'
 
 
 function App() {    
@@ -27,7 +29,9 @@ function App() {
                     <Route path='/tourists' element={<TouristsPage />}/>
                     <Route path='/guide' element={<GuidePage />}/>
                     <Route path='/confirmGuide' element={<GuideConfirmPage />}/>
+                    <Route path='/currentTours' element={<CurrentTourPage />}/>
                     <Route path='/tours' element={<TourListPage />}/>
+                    <Route path='/companies' element={<CompanyPage />}/>
                     <Route path='/reportedRatings' element={<ReportedRatingsPage />}/>
                     <Route path='/profile' element={<ProfilePage />}/>
                     <Route path='/editProfile' element={<EditProfilePage />}/>

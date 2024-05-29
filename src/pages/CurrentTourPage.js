@@ -1,10 +1,11 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar'
-import TourList from '../Components/TourList'
+import TourList from '../Components/CurrentTourList'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import { useState  } from 'react';
-function TourListPage() {
- 
+import CurrentTourList from '../Components/CurrentTourList'
+
+
+function CurrentTourPage() {
   return (
     <>
       <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#f1f2f4"}}>
@@ -14,13 +15,13 @@ function TourListPage() {
               </div>
             
               <div className='mt-5 card p-1 pt-4 w-100 me-3'>          
-                    <TourList />                  
+                    <CurrentTourList />                  
               </div> 
           </div> 
       </div>   
         
     </>
-  );
+  )
 }
 
-export default TourListPage
+export default CurrentTourPage

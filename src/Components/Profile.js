@@ -9,20 +9,19 @@ import {
     MDBCard,
     MDBCardText,
     MDBCardBody,
-    MDBCardImage,
     MDBBtn,
     MDBBreadcrumb,
     MDBBreadcrumbItem,
-    MDBProgress,
-    MDBProgressBar,
     MDBIcon,
     MDBListGroup,
     MDBListGroupItem
   } from 'mdb-react-ui-kit';
+  import ProfileImage from './ProfileImage'
+  
 function Profile({ Toggle }) {
   return (
     <div className='px-3'>
-        <Nav Toggle={Toggle} />
+  
         <section >
       <MDBContainer >
         <MDBRow>
@@ -42,41 +41,17 @@ function Profile({ Toggle }) {
           <MDBCol lg="4">
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
+                <div className='main'>
+                <ProfileImage name='buraksazli'/></div>
                 <h2 className=" text-dark mb-1 fw-bold">Burak Sazlı</h2>
                 <p className="text-muted mb-1">@buraksazli</p>
                 <p className="text-muted mb-1">Admin</p>
-                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                <p className="text-muted mb-4">buraksazli@gmail.com</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <MDBBtn>Follow</MDBBtn>
-                  <MDBBtn outline className="ms-1">Message</MDBBtn>
+                  <Link to={'/editProfile'}>
+                  <MDBBtn>Edit Profile</MDBBtn>
+                  </Link>
                 </div>
-              </MDBCardBody>
-            </MDBCard>
-
-            <MDBCard className="mb-4 mb-lg-0">
-              <MDBCardBody className="p-0">
-                <MDBListGroup flush className="rounded-3">
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fas icon="globe fa-lg text-warning" />
-                    <MDBCardText>https://mdbootstrap.com</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="github fa-lg" style={{ color: '#333333' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="twitter fa-lg" style={{ color: '#55acee' }} />
-                    <MDBCardText>@mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="instagram fa-lg" style={{ color: '#ac2bac' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="facebook fa-lg" style={{ color: '#3b5998' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                </MDBListGroup>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

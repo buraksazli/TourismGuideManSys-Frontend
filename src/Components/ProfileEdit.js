@@ -2,57 +2,131 @@ import React from 'react'
 import Nav from './Navbar';
 import Profileimg from '../assets/icons/profileimg.png'
 import { Link } from 'react-router-dom'
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import {
+    MDBCol,
+    MDBContainer,
+    MDBRow,
+    MDBCard,
+    MDBCardText,
+    MDBCardBody,
+    MDBBtn,
+    MDBBreadcrumb,
+    MDBBreadcrumbItem,
+    MDBIcon,
+    MDBListGroup,
+    MDBListGroupItem
+  } from 'mdb-react-ui-kit';
+  import ProfileImage from './ProfileImage'
 
 function ProfileEdit({ Toggle }) {
     return (
         <div className='px-3'>
-            <Nav Toggle={Toggle} />
-            <div className='d-flex flex-row p-4 mt-5 w-75 ms-auto me-auto '>
-                <div className='bg-light rounded w-25 me-1 d-flex flex-column shadow '>
-                    <img className='ms-auto me-auto mt-3' src={Profileimg} alt="Profile" style={{height:125, width:125}} />
-                    <h1 className='ms-auto me-auto'>Profile</h1>
-                    <Link to={'/profile'}  className='text-dark  text-center h-100 mb-1  text-decoration-none list-group-item list-group-item-primary list-group-item-action'>                  
-                        <span >My Profile</span>       
-                    </Link> 
-                    <Link to={'/editProfile'}  className='text-dark  text-center h-100 mb-1  text-decoration-none list-group-item list-group-item-primary list-group-item-action'>                  
-                        <span >Edit Profile</span>       
-                    </Link> 
-                    <Link to={'/changePassword'}  className='text-dark  text-center h-100 mb-1  text-decoration-none list-group-item list-group-item-primary list-group-item-action'>                  
-                        <span >Change Password</span>       
-                    </Link> 
-                </div>
-                <div className="container bg-light rounded p-5 w-75 shadow">
-                <form action="" id="profileForm">
-                    <div className="d-flex flex-column">
-                        <div className='d-flex flex-row justify-content-between'>
-                            <div className='d-flex flex-column w-100 me-2'>
-                                <label  for="name">First Name:</label>
-                                <input type="text" name="name" id="name" placeholder='Burak'  required></input>
-                            </div>
-                            <div className='d-flex flex-column w-100'>
-                                <label for="name">Last Name:</label>
-                                <input type="text" name="name" id="name" placeholder='Sazlı' required></input>
-                            </div>
-                        </div>
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" placeholder='buraksazli@gmail.com' required></input>
+             <section >
+      <MDBContainer >
+        <MDBRow>
+          <MDBCol>
+            <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
+              <MDBBreadcrumbItem>
+                <a href='#'>Home</a>
+              </MDBBreadcrumbItem>
+              <MDBBreadcrumbItem>
+                <a href="#">User Profile</a>
+              </MDBBreadcrumbItem>
+              <MDBBreadcrumbItem>
+                <a href="#">Edit User Profile</a>
+              </MDBBreadcrumbItem>
+            </MDBBreadcrumb>
+          </MDBCol>
+        </MDBRow>
 
-                        <label for="name">Phone Number:</label>
-                        <input type="text" name="name" id="name" placeholder='5512028390' required></input>
-                        
-                        <label for="name">BirthDate:</label>
-                        <input type="text" name="name" id="name" placeholder='1999-05-08' required></input>
+        <MDBRow>
+          <MDBCol lg="4">
+            <MDBCard className="mb-4">
+              <MDBCardBody className="text-center">
+                <div className='main'>
+                <ProfileImage name='buraksazli'/></div>
+                <h2 className=" text-dark mb-1 fw-bold">Burak Sazlı</h2>
+                <p className="text-muted mb-1">@buraksazli</p>
+                <p className="text-muted mb-1">Admin</p>
+                <p className="text-muted mb-4">buraksazli@gmail.com</p>
+                <div className="d-flex justify-content-center mb-2">
+                  <Link to={'/Profile'}>
+                  <MDBBtn>Back to Profile</MDBBtn>
+                  </Link>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+          <MDBCol lg="8">
+            <MDBCard className="mb-4 h-100">
+              <MDBCardBody>
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>First Name</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <input className='w-75' type='text'></input>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Last Name</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                  <input className='w-75' type='text'></input>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Username</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                  <input className='w-75' type='text'></input>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Email</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                  <input className='w-75' type='email'></input>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Phone Number</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                  <input className='w-75' type='text'></input>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Birth Date</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                  <input className='w-75' type='date'></input>
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow>
+                  <MDBCol sm="3">
                     
-                        <div className='text-center'>
-                        <button className='btn btn-primary ' onclick="submitForm()">Submit</button>
-                    </div>
-                    </div>
-                    
-                    
-                </form>
-        </div>
-        </div>
+                  </MDBCol>
+                  <MDBCol sm="6">
+                  <button type='submit' className='btn btn-primary mt-3 w-100'>Submit</button>
+                  </MDBCol>
+                </MDBRow>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </section>
       </div>
       )
 }

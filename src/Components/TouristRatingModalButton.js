@@ -61,6 +61,7 @@ function TouristRatingModalButton({id}) {
                 ratings.map((item, index) => (
                     <Rating 
                         key={index} 
+                        id={item.id}
                         ratingImages={item.ratingImages} 
                         touristName={item.tourist.username} 
                         value={item.value} 
@@ -73,9 +74,6 @@ function TouristRatingModalButton({id}) {
         <Modal.Footer style={{backgroundColor: "#F0F0F0"}}>
             <Button variant="secondary" onClick={handleClose}>
             Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-            Save Changes
             </Button>
         </Modal.Footer>
         </Modal>

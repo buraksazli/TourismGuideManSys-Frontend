@@ -61,6 +61,7 @@ export default function GuideRatingModalButton({id}) {
                 ratings.map((item, index) => (
                     <Rating 
                         key={index} 
+                        id={item.id}
                         ratingImages={item.ratingImages} 
                         touristName={item.tourist.username} 
                         value={item.value} 

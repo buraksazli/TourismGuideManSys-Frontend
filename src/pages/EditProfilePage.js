@@ -10,15 +10,15 @@ function EditProfilePage() {
     }
   return (
     <>
-    <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#d3d5e8"}}>
+    <div className='container-fluid  min-vh-100 ' style={{backgroundColor: "#f1f2f4"}}>
         <div className='row '>        
-           
+             
           <Sidebar />     
-        </div>      
-          <div className='col-4 col-md-2'></div>      
+                         
+            <div className='col-4 col-md-2'></div>        
             <div className='col'>          
-                <ProfileEdit />                  
-            </div> 
+                <ProfileEdit Toggle={Toggle}/>                  
+            </div> </div>  
         </div>  
       
     </>

@@ -18,6 +18,7 @@ function Login() {
       console.log(response);
       if(response.succeeded) {
         localStorage.setItem('Token', response.data.jwToken);
+        localStorage.setItem('username', response.data.userName);
         setLoggedIn(true);
         navigate('/home');
       }      
