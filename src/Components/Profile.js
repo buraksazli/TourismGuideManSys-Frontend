@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from './Navbar';
 import Profileimg from '../assets/icons/profileimg.png'
 import { Link } from 'react-router-dom'
@@ -17,8 +17,27 @@ import {
     MDBListGroupItem
   } from 'mdb-react-ui-kit';
   import ProfileImage from './ProfileImage'
+import { getAdminById } from '../api/admin';
   
-function Profile({ Toggle }) {
+function Profile() {
+  const [adminInfo,setAdminInfo] = useState([]);
+  const fetchadmininfo = async () => {
+    try {
+        const token = localStorage.getItem('Token');
+        const id = localStorage.getItem('id');
+        const response = await getAdminById(token , id);
+        console.log(response.data);
+        setAdminInfo(response.data);
+    } catch {
+        console.log('error');
+    }      
+}
+
+useEffect(()  => {
+  fetchadmininfo();
+ 
+},[]);
+
   return (
     <div className='px-3'>
   
@@ -43,8 +62,8 @@ function Profile({ Toggle }) {
               <MDBCardBody className="text-center">
                 <div className='main'>
                 <ProfileImage name='buraksazli'/></div>
-                <h2 className=" text-dark mb-1 fw-bold">Burak Sazlı</h2>
-                <p className="text-muted mb-1">@buraksazli</p>
+                <h2 className=" text-dark mb-1 fw-bold">{adminInfo.firstName}</h2>
+                <p className="text-muted mb-1">{adminInfo.lastname}</p>
                 <p className="text-muted mb-1">Admin</p>
                 <p className="text-muted mb-4">buraksazli@gmail.com</p>
                 <div className="d-flex justify-content-center mb-2">
@@ -63,7 +82,7 @@ function Profile({ Toggle }) {
                     <MDBCardText>First Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
+                    <MDBCardText className="text-muted">{adminInfo.firstName}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -72,7 +91,7 @@ function Profile({ Toggle }) {
                     <MDBCardText>Last Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">example@example.com</MDBCardText>
+                    <MDBCardText className="text-muted">{adminInfo.lastName}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -81,7 +100,7 @@ function Profile({ Toggle }) {
                     <MDBCardText>Username</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
+                    <MDBCardText className="text-muted">{adminInfo.username}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -90,7 +109,7 @@ function Profile({ Toggle }) {
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
+                    <MDBCardText className="text-muted">buraksazli@gmail.com</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -99,7 +118,7 @@ function Profile({ Toggle }) {
                     <MDBCardText>Phone Number</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                    <MDBCardText className="text-muted">{adminInfo.phoneNumber}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -108,7 +127,7 @@ function Profile({ Toggle }) {
                     <MDBCardText>Birth Date</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                    <MDBCardText className="text-muted">{adminInfo.birthDate}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>

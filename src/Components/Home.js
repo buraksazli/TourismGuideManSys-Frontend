@@ -26,7 +26,7 @@ function Home({ Toggle }) {
     const fetchtour = async () => {
         try {
             const token = localStorage.getItem('Token');
-            const response = await getCurrentTours(token);
+            const response = await getCurrentTours(1,token);
             console.log(response);
             setTour(response.data);
             
