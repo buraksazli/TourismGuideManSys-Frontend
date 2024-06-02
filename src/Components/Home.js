@@ -89,15 +89,15 @@ function Home({ Toggle }) {
                     
                     <div className='col-md-3 p-1'>     
                              <div className='   ' >       
-                                 <div className='d-flex text-center rounded-top- justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
-                                    <i className='bi bi-people-fill fs-1 ps-3' style={{color:"#289fe0"}}></i>
+                                 <div className='d-flex text-center rounded-top-4 justify-content-between align-items-center p-4 ' style={{backgroundColor:"white"}} > 
+                                    <i className='bi bi-people-fill fs-1 ps-3' style={{color:"#f36944"}}></i>
                                     <div className='d-flex flex-column'>                     
                                         <span className='fs-2 text-dark pe-3 '><b>{dashboard.totalVerifiedGuides}</b></span>
                                         <span>Total Guides</span>  </div>              
                                     </div> 
                                     <Link to="/guide"> 
-                                        <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
-                                            See more <i className="bi bi-caret-right"></i>
+                                        <div className='text-dark rounded-bottom-4 ps-2 pe-2 d-flex justify-content-between' style={{ color: "#41659e" , backgroundColor:"#d1d9ed"}}>           
+                                            <span style={{ color: "#41659e" }}>See more</span><i className="bi bi-caret-right" style={{ color: "#41659e" }}></i> 
                                         </div>
                                     </Link>          
                              </div>                
@@ -105,15 +105,15 @@ function Home({ Toggle }) {
 
                          <div className='col-md-3 p-1'>     
                              <div className='   rounded-5' >       
-                                 <div className='d-flex text-center justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
-                                    <i className='bi bi-person-fill fs-1 ps-3' style={{color:"#289fe0"}}></i>
+                                 <div className='d-flex text-center rounded-top-4 justify-content-between align-items-center p-4 ' style={{backgroundColor:"white"}} > 
+                                    <i className='bi bi-person-fill fs-1 ps-3' style={{color:"#f36944"}}></i>
                                     <div className='d-flex flex-column'>                     
                                         <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>{dashboard.totalTourists}</b></span>
                                         <span>Total Tourists</span>  </div>              
                                     </div>    
                                     <Link to="/tourists">  
-                                        <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
-                                            See more <i className="bi bi-caret-right"></i>
+                                        <div className='text-dark rounded-bottom-4 ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
+                                           <span style={{ color: "#41659e" }}>See more</span><i className="bi bi-caret-right" style={{ color: "#41659e" }}></i> 
                                         </div>            
                                     </Link> 
                              </div>                
@@ -121,15 +121,15 @@ function Home({ Toggle }) {
 
                          <div className='col-md-3 p-1'>     
                              <div className='   rounded-5' >       
-                                 <div className='d-flex text-center justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
-                                    <i className='bi bi-globe-americas fs-1 ps-3' style={{color:"#289fe0"}}></i>
+                                 <div className='d-flex text-center rounded-top-4 justify-content-between align-items-center p-4 ' style={{backgroundColor:"white"}} > 
+                                    <i className='bi bi-globe-americas fs-1 ps-3' style={{color:"#f36944"}}></i>
                                     <div className='d-flex flex-column'>                     
                                         <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>{dashboard.totalTours}</b></span>
                                         <span>Total Tours</span>  </div>              
                                     </div>  
                                     <Link to="/tours">     
-                                        <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
-                                            See more <i className="bi bi-caret-right"></i>
+                                        <div className='text-dark rounded-bottom-4 ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
+                                           <span style={{ color: "#41659e" }}>See more</span><i className="bi bi-caret-right" style={{ color: "#41659e" }}></i> 
                                         </div>     
                                      </Link>    
                              </div>                
@@ -137,15 +137,15 @@ function Home({ Toggle }) {
 
                          <div className='col-md-3 p-1'>     
                              <div className='   rounded-5' >       
-                                 <div className='d-flex text-center justify-content-between align-items-center p-4 ' style={{backgroundColor:"#e3ebf7"}} > 
-                                    <i className='bi bi-building-fill fs-1 ps-3' style={{color:"#289fe0"}}></i>
+                                 <div className='d-flex text-center rounded-top-4 justify-content-between align-items-center p-4 ' style={{backgroundColor:"white"}} > 
+                                    <i className='bi bi-building-fill fs-1 ps-3' style={{color:"#f36944"}}></i>
                                     <div className='d-flex flex-column'>                     
                                         <span className='fs-2 text-dark pe-3 ' style={{color:"#285192"}}><b>2</b></span>
                                         <span>Total Companies</span>  </div>              
                                     </div> 
                                     <Link to="/companies"> 
-                                        <div className='text-dark  ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
-                                            See more <i className="bi bi-caret-right"></i>
+                                        <div className='text-dark rounded-bottom-4 ps-2 pe-2 d-flex justify-content-between' style={{backgroundColor:"#d1d9ed"}}>           
+                                           <span style={{ color: "#41659e" }}>See more</span><i className="bi bi-caret-right" style={{ color: "#41659e" }}></i> 
                                         </div> 
                                     </Link>              
                              </div>                

@@ -20,9 +20,9 @@ function Sidebar(){
     <header>
        <nav
        id="sidebarMenu"
-       className="collapse d-lg-block sidebar collapse bg-white"
+       className="collapse d-lg-block  sidebar collapse bg-white"
        >
-    <div className="position-sticky">
+    <div className="position-sticky ">
       <div className="list-group list-group-flush mx-2 mt-4 pt-4">
               
                   <Link
@@ -166,7 +166,7 @@ function Sidebar(){
       </button>
 
       <div className="navbar-brand ms-4" href="#">
-        <img src={logo} alt="Logo" style={{height:40, width:40, backgroundColor: "white"}} />Travely
+        <img src={logo} alt="Logo" style={{height:40, width:40, backgroundColor: "white"}} />TGMS
       </div>
       
       <Link to={'/login'} >  
