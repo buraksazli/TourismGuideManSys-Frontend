@@ -3,6 +3,9 @@
 This project is Admin Panel for Tourism Guide Management System using React and Bootstrap. 
 You can login with email: buraksazli@gmail.com and password: 123Burak@
 
+## Deployment
+The project is deployed on Azure Static Apps. You can get the application via https://orange-flower-0f3ed7510.5.azurestaticapps.net/
+
 ## Installation
 
 1. Clone project
